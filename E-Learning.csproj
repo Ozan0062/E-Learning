@@ -11,8 +11,4 @@
     <None Include="wwwroot\Images\Zealand_logo.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Silas\" />
-  </ItemGroup>
-
 </Project>
