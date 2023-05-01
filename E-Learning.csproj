@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\Zealand_logo.png" />
+    <Compile Remove="Pages\Silas\**" />
+    <Content Remove="Pages\Silas\**" />
+    <EmbeddedResource Remove="Pages\Silas\**" />
+    <None Remove="Pages\Silas\**" />
   </ItemGroup>
 
 </Project>
