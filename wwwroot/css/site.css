@@ -24,3 +24,111 @@ body {
 body {
     margin: 0;
 }
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.mynav_navbar {
+    overflow: hidden;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+    .mynav_navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+.mynav_dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+    .mynav_dropdown .mynav_dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 14px 16px;
+        background-color: inherit;
+        font: inherit;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
+        background-color: #fff387;
+        text-decoration: none;
+        color: #595959;
+        font-weight: bold;
+    }
+
+.mynav_dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px white;
+    z-index: 1;
+    font-weight: bold;
+}
+
+    .mynav_dropdown-content .mynav_header {
+        background: #595959;
+        padding: 16px;
+        color: #fff387;
+        font-weight: bold;
+    }
+
+.mynav_header {
+    text-align: center;
+}
+
+.mynav_dropdown:hover .mynav_dropdown-content {
+    display: block;
+}
+
+/* Create three equal columns that floats next to each other */
+.mynav_column {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background-color: #595959;
+    color: #fff387;
+    height: 250px;
+    font-weight: bold;
+}
+
+    .mynav_column a {
+        float: none;
+        color: white;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        padding: 3px 12px;
+    }
+
+        .mynav_column a:hover {
+            background-color: white;
+        }
+
+/* Clear floats after the columns */
+.mynav_row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

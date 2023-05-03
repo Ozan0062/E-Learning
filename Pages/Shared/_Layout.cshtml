@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using E_Learning.Pages.LogIn
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,119 +19,7 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                    <style>
-                        * {
-                            box-sizing: border-box;
-                        }
-
-                        body {
-                            margin: 0;
-                        }
-
-                        .mynav_navbar {
-                            overflow: hidden;
-                            background-color: white;
-                            font-family: Arial, Helvetica, sans-serif;
-                        }
-
-                        .mynav_navbar a {
-                                float: left;
-                                font-size: 16px;
-                                color: white;
-                                text-align: center;
-                                padding: 14px 16px;
-                                text-decoration: none;
-                                font-weight: bold;
-                            }
-
-                        .mynav_dropdown {
-                            float: left;
-                            overflow: hidden;
-                        }
-
-                            .mynav_dropdown .mynav_dropbtn {
-                                font-size: 16px;
-                                border: none;
-                                outline: none;
-                                color: black;
-                                padding: 14px 16px;
-                                background-color: inherit;
-                                font: inherit;
-                                margin: 0;
-                                font-weight: bold;
-                            }
-
-                            .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
-                                background-color: #fff387;
-                                text-decoration: none;
-                                color: #595959;
-                                font-weight: bold;
-                            }
-
-                        .mynav_dropdown-content {
-                            display: none;
-                            position: absolute;
-                            background-color: #f9f9f9;
-                            width: 100%;
-                            left: 0;
-                            box-shadow: 0px 8px 16px 0px white;
-                            z-index: 1;
-                            font-weight: bold;
-                        }
-
-                            .mynav_dropdown-content .mynav_header {
-                                background: #595959;
-                                padding: 16px;
-                                color: #fff387;
-                                font-weight: bold;
-                            }
-
-                        .mynav_header {
-                            text-align: center;
-                        }
-
-                        .mynav_dropdown:hover .mynav_dropdown-content {
-                            display: block;
-                        }
-
-                        /* Create three equal columns that floats next to each other */
-                        .mynav_column {
-                            float: left;
-                            width: 20%;
-                            padding: 10px;
-                            background-color: #595959;
-                            color: #fff387;
-                            height: 250px;
-                            font-weight: bold;
-                        }
-
-                            .mynav_column a {
-                                float: none;
-                                color: white;
-                                padding: 16px;
-                                text-decoration: none;
-                                display: block;
-                                text-align: left;
-                                font-weight: bold;
-                                padding: 3px 12px;
-                            }
-
-                                .mynav_column a:hover {
-                                    background-color: white;
-                                }
-
-                        /* Clear floats after the columns */
-                        .mynav_row:after {
-                            content: "";
-                            display: table;
-                            clear: both;
-                        }
-
-
-                                                      
-                    </style>
-
+                    <div class="collapse navbar-collapse justify-content-between">
                         <div class="mynav_navbar">
                             <div class="mynav_dropdown">
                             <button class="mynav_dropbtn">
@@ -172,10 +61,25 @@
                             <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index"><button class="btn btn-basic" style="background-color:#fff387">Opret Bruger</button></a>
                             </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Login"><button class="btn btn-basic" style="background-color: #fff387">Log ind</button></a>
-                            </li>
+                        @{
+                            if (LogInPageModel.LoggedInUser == null) // No one logged in -> show "Log in"
+                            {
+                                <li class="nav-link">
+                                    <a class="btn btn-basic" style="background-color:#fff387" asp-area="" asp-page="/LogIn/LogInPage">Log ind</a>
+                                </li>
+                            }
+                            else // Someone logged in -> show user name and "Log out"
+                            {
+                                <li class="nav-item nav-link text-dark me-3">
+                                    <span>User:</span> <span><b>@LogInPageModel.LoggedInUser.Email</b></span>
+                                </li>
+                                <li class="nav-link">
+                                 <a class ="btn btn-basic" style="background-color:#fff387" asp-area="" asp-page="/LogIn/LogOutPage">Log ud</a>
+                                </li>
+                            }
+                        }
                         </ul>
+
                     </div>
                 </div>
             </nav>

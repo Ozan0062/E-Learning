@@ -1,7 +1,32 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    // Add authorization options
+    //options.Conventions.AuthorizeFolder("/Products");
+    //options.Conventions.AuthorizeFolder("/Orders");
+    //options.Conventions.AuthorizeFolder("/Customers");
+});
+
+// Add data services
+builder.Services.AddSingleton<IUserDataService, EFCUserDataService>();
+
+
+// Add cookie-based Authentication
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/LogIn/LogInPage";
+});
+
 
 var app = builder.Build();
 
@@ -17,7 +42,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication(); // Enables cookie-based Authentication
 app.UseAuthorization();
 
 app.MapRazorPages();

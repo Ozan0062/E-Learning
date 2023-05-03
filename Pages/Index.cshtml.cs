@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Learning.Pages
@@ -14,7 +16,11 @@ namespace E_Learning.Pages
 
         public void OnGet()
         {
-
+            if (LogInPageModel.LoggedInUser == null) // Force Signout on startup
+            {
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
         }
+
     }
 }
