@@ -36,8 +36,15 @@ public partial class ELearningDBContext : DbContext
             entity.HasKey(e => e.Id);
         });
 
-        OnModelCreatingPartial(modelBuilder);
+		modelBuilder.Entity<Course>(entity =>
+		{
+			entity.HasKey(e => e.Id);
+		});
+
+		OnModelCreatingPartial(modelBuilder);
     }
+
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

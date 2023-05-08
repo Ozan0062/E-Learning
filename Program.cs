@@ -14,6 +14,8 @@ builder.Services.AddRazorPages(options =>
 
 // Add data services
 builder.Services.AddSingleton<IUserDataService, EFCUserDataService>();
+builder.Services.AddSingleton<ICourseDataService, EFCCourseDataService>();
+
 
 
 // Add cookie-based Authentication
