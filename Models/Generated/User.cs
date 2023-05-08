@@ -11,11 +11,84 @@ public partial class User
     [Key]
     public int Id { get; set; }
 
+    [Display(Name = "Navn")]
+    [Required(ErrorMessage = "Navn er påkrævet")]
+    public string Name { get; set; }
+
     [Required]
     public string Email { get; set; }
 
 
-    [Required]
+    [Display(Name = "Adgangskode")]
     [DataType(DataType.Password)]
+    [Required(ErrorMessage = "Adgangskode er påkrævet")]
     public string Password { get; set; }
+
+    [Display(Name = "Adresse")]
+    [Required(ErrorMessage = "Adresse er påkrævet")]
+    public string Address { get; set; }
+
+    [Display(Name = "By")]
+    [Required(ErrorMessage = "By er påkrævet")]
+    public string City { get; set; }
+
+    [Display(Name = "Postnummer")]
+    [DataType(DataType.PostalCode)]
+    [Required(ErrorMessage = "Postnummer er påkrævet")]
+    public int PostalCode { get; set; }
+
+    [Display(Name = "Telefonnummer")]
+    [DataType(DataType.PhoneNumber)]
+    [Required(ErrorMessage = "Telefonnummer er påkrævet")]
+    public int PhoneNumber { get; set; }
+}
+
+[Table("Admin")]
+public partial class Admin
+{
+    [Key]
+    public int Id { get; set; }
+
+    [Display(Name = "Navn")]
+    [Required(ErrorMessage = "Navn er påkrævet")]
+    public string Name { get; set; }
+
+    [Required]
+    public string Email { get; set; }
+
+
+    [Display(Name = "Adgangskode")]
+    [DataType(DataType.Password)]
+    [Required(ErrorMessage = "Adgangskode er påkrævet")]
+    public string Password { get; set; }
+
+    [Display(Name = "Telefonnummer")]
+    [DataType(DataType.PhoneNumber)]
+    [Required(ErrorMessage = "Telefonnummer er påkrævet")]
+    public int PhoneNumber { get; set; }
+}
+
+[Table("Instructor")]
+public partial class Instructor
+{
+    [Key]
+    public int Id { get; set; }
+
+    [Display(Name = "Navn")]
+    [Required(ErrorMessage = "Navn er påkrævet")]
+    public string Name { get; set; }
+
+    [Required]
+    public string Email { get; set; }
+
+
+    [Display(Name = "Adgangskode")]
+    [DataType(DataType.Password)]
+    [Required(ErrorMessage = "Adgangskode er påkrævet")]
+    public string Password { get; set; }
+
+    [Display(Name = "Telefonnummer")]
+    [DataType(DataType.PhoneNumber)]
+    [Required(ErrorMessage = "Telefonnummer er påkrævet")]
+    public int PhoneNumber { get; set; }
 }

@@ -14,6 +14,8 @@ builder.Services.AddRazorPages(options =>
 
 // Add data services
 builder.Services.AddSingleton<IUserDataService, EFCUserDataService>();
+builder.Services.AddSingleton<IAdminDataService, EFCAdminDataService>();
+builder.Services.AddSingleton<IInstructorDataService, EFCInstructorDataService>();
 
 
 // Add cookie-based Authentication
@@ -25,6 +27,9 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
 {
     options.LoginPath = "/LogIn/LogInPage";
+    options.LoginPath = "/LogIn/AdminLogIn";
+    options.LoginPath = "/LogIn/InstructoLogIn";
+    options.LoginPath = "/Register/RegisterPage";
 });
 
 

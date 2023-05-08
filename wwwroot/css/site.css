@@ -132,3 +132,26 @@ body {
     display: table;
     clear: both;
 }
+
+.mycontainer_container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+a {
+    color: black; /* gør linket sort */
+    text-decoration: none; /* fjerner understregning */
+}
+
+.a-link:hover {
+    color: #EFE464;
+}
+
+
+
+
+
+
+
+
+

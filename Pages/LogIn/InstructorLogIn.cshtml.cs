@@ -7,11 +7,11 @@ using System.Security.Claims;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Reflection.Metadata;
 
-public class LogInPageModel : PageModel
+public class InstructorLogInModel : PageModel
 {
-    private IUserDataService _userDataService;
+    private IInstructorDataService _instructorDataService;
 
-    public static User LoggedInUser { get; set; }
+    public static Instructor LoggedInInstructor { get; set; }
 
     [BindProperty, DataType(DataType.EmailAddress)]
     public string Email { get; set; }
@@ -23,15 +23,15 @@ public class LogInPageModel : PageModel
 
     public string Message { get; set; }
 
-    public LogInPageModel(IUserDataService userDataService)
+    public InstructorLogInModel(IInstructorDataService instructorDataService)
     {
-        _userDataService = userDataService;
+        _instructorDataService = instructorDataService;
     }
     public async Task<IActionResult> OnPost()
     {
-        LoggedInUser = _userDataService.VerifyUser(Email, Password);
+        LoggedInInstructor = _instructorDataService.VerifyInstructor(Email, Password);
 
-        if (LoggedInUser == null)
+        if (LoggedInInstructor == null)
         {
             Message = "Invalid attempt";
             return Page();
@@ -40,17 +40,17 @@ public class LogInPageModel : PageModel
         // Log in with identity
         await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
-            BuildClaimsPrincipal(LoggedInUser));
+            BuildClaimsPrincipal(LoggedInInstructor));
 
         return RedirectToPage("/Index");
     }
 
 
-    private ClaimsPrincipal BuildClaimsPrincipal(User user)
+    private ClaimsPrincipal BuildClaimsPrincipal(Instructor instructor)
     {
         // Build Claims
         List<Claim> claims = new List<Claim> {
-          new Claim(ClaimTypes.Email, user.Email) };
+          new Claim(ClaimTypes.Email, instructor.Email) };
 
         // Create claims-based identity
         ClaimsIdentity claimsIdentity = new ClaimsIdentity(
@@ -63,4 +63,6 @@ public class LogInPageModel : PageModel
     }
 
 }
+
+
 

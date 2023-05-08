@@ -7,6 +7,8 @@ public class LogOutPageModel : PageModel
     public async Task<IActionResult> OnGet()
     {
         LogInPageModel.LoggedInUser = null;
+        AdminLogInModel.LoggedInAdmin = null;
+        InstructorLogInModel.LoggedInInstructor = null;
 
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 

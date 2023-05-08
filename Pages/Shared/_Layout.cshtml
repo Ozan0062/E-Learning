@@ -21,10 +21,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="mynav_navbar">
-                            <div class="mynav_dropdown">
+                        <div class="mynav_dropdown">
                             <button class="mynav_dropbtn">
                                     Uddannelser
-                                    <i class="fa fa-caret-down"></i>
+                                <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
                                 <div class="mynav_header">
@@ -57,28 +57,64 @@
                                 </div>
                             </div>
                         </div>
+                    <ul class="navbar-nav ms-auto">
+                    @if (AdminLogInModel.LoggedInAdmin != null)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Underviser
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-page="/Admin/CreateInstructor">Tilføj Underviser</a></li>
+                                <li><a class="dropdown-item">Slet Underviser</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kursus
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Tilføj Kursus</a></li>
+                                <li><a class="dropdown-item" href="#">Slet Kursus</a></li>
+                            </ul>
+                        </li>
+                    }
+                    </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index"><button class="btn btn-basic" style="background-color:#fff387">Opret Bruger</button></a>
-                            </li>
                         @{
-                            if (LogInPageModel.LoggedInUser == null) // No one logged in -> show "Log in"
+                            if (LogInPageModel.LoggedInUser == null && InstructorLogInModel.LoggedInInstructor == null && AdminLogInModel.LoggedInAdmin == null) // No one logged in -> show "Log ind"
                             {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/Register/RegisterPage"><button class="btn btn-basic" style="background-color:#fff387">Opret Bruger</button></a>
+                                </li>
                                 <li class="nav-link">
                                     <a class="btn btn-basic" style="background-color:#fff387" asp-area="" asp-page="/LogIn/LogInPage">Log ind</a>
                                 </li>
                             }
                             else // Someone logged in -> show user name and "Log out"
                             {
-                                <li class="nav-item nav-link text-dark me-3">
-                                    <span>User:</span> <span><b>@LogInPageModel.LoggedInUser.Email</b></span>
-                                </li>
-                                <li class="nav-link">
-                                 <a class ="btn btn-basic" style="background-color:#fff387" asp-area="" asp-page="/LogIn/LogOutPage">Log ud</a>
-                                </li>
+                                    <li class="nav-item nav-link text-dark me-3">
+                                    @{
+                                        if (LogInPageModel.LoggedInUser != null)
+                                        {
+                                            <span>Bruger:</span> <span><b>@LogInPageModel.LoggedInUser.Name</b></span>
+                                        }
+                                        else if (InstructorLogInModel.LoggedInInstructor != null)
+                                        {
+                                            <span>Underviser:</span> <span><b>@InstructorLogInModel.LoggedInInstructor.Name</b></span>
+                                        }
+                                        else if (AdminLogInModel.LoggedInAdmin != null)
+                                        {
+                                            <span>Admin:</span> <span><b>@AdminLogInModel.LoggedInAdmin.Name</b></span>
+                                        }
+                                    }
+                                    </li>
+                                    <li class="nav-link">
+                                        <a class="btn btn-basic" style="background-color:#fff387" asp-area="" asp-page="/LogIn/LogOutPage">Log ud</a>
+                                    </li>
+
                             }
                         }
-                        </ul>
 
                     </div>
                 </div>
@@ -92,7 +128,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - E_Learning - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2023 - Zealand E-Learning</a>
         </div>
     </footer>
 
