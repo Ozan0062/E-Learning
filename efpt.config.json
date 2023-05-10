@@ -15,7 +15,7 @@
    "SelectedToBeGenerated": 2,
    "Tables": [
       {
-         "Name": "[dbo].[Course]",
+         "Name": "[dbo].[Education]",
          "ObjectType": 0
       }
    ],

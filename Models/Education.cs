@@ -6,26 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-
-[Table("Course")]
-public partial class Course
-{
-    [Key]
-    public int Id { get; set; }
-
-    [Required]
-    public int EducationId { get; set; }
-
-    [Required]
-    public string Name { get; set; }
-
-    [Required]
-    public string Description { get; set; }
-
-    [ForeignKey("EducationId")]
-    [InverseProperty("Educations")]
-    public virtual Education Education { get; set; }
-}
+namespace E_Learning.Models;
 
 [Table("Education")]
 public partial class Education
