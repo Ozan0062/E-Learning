@@ -34,8 +34,11 @@ CREATE TABLE [dbo].[Instructor] (
 
 CREATE TABLE [dbo].[Course] (
     [Id]          INT            IDENTITY (1, 1) NOT NULL,
+    [EducationId] INT            NOT NULL,
     [Name]        NVARCHAR (MAX) NOT NULL,
-    [Description] NVARCHAR (MAX) NOT NULL
+    [Description] NVARCHAR (MAX) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Course_Education_EducationId] FOREIGN KEY ([EducationId]) REFERENCES [dbo].[Education] ([Id])
 );
 
 INSERT INTO [dbo].[Admin] (
@@ -45,6 +48,7 @@ INSERT INTO [dbo].[Admin] (
 
 CREATE TABLE [dbo].[Education] (
     [Id]          INT            IDENTITY (1, 1) NOT NULL,
-    [Name]        NVARCHAR (MAX) NOT NULL
+    [Name]        NVARCHAR (MAX) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
 );
 
