@@ -61,7 +61,7 @@ public partial class ELearningDBContext : DbContext
         OnModelCreatingPartial(modelBuilder);
     }
 
-
+    
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
