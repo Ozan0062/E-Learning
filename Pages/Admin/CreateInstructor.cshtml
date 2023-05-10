@@ -1,0 +1,31 @@
+﻿@page
+@model CreateInstructorModel
+@{
+}
+
+<h2 class="display-6 mb-3 text-center">Opret Underviser</h2>
+
+<div class="mycontainer_container">
+    <form method="post">
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Name" class="control-label "></label>
+            <input asp-for="@Model.Data.Name" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Email" class="control-label "></label>
+            <input asp-for="@Model.Data.Email" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Password" class="control-label"></label>
+            <input asp-for="@Model.Data.Password" class="form-control" />
+            <input type="checkbox" onclick="showPassword()"> Vis adgangskode
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.PhoneNumber" class="control-label "></label>
+            <input asp-for="@Model.Data.PhoneNumber" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <input type="submit" value="Opret Underviser" class="btn btn-basic" style="background-color:#fff387" />
+        </div>
+    </form>
+</div>
