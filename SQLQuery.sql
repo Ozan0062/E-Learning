@@ -38,6 +38,3 @@ CREATE TABLE [dbo].[Course] (
     [Description] NVARCHAR (MAX) NOT NULL
 );
 
-INSERT INTO [dbo].Admin ([Email], [Password])
-VALUES 
-('admin@gmail.com', 'admin');
