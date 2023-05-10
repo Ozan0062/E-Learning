@@ -26,6 +26,8 @@ public class CreatePageModel<T> : PageModelAppBase<T>
             return Page();
         }
 
+
+
         // Submit data to data service
         _dataService.Create(Data);
 

@@ -1,0 +1,39 @@
+﻿@page
+@model AllModel
+@{
+}
+
+<h2 class="display-6 mb-3 text-center">Underviser</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var instructor in Model.Data)
+        {
+            <div class="col-md-4 p-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">@instructor.Name</h3>
+                        <h5>@(instructor.Email)</h5>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5>@(instructor.PhoneNumber)</h5>
+                            </div>
+                            <div>
+                                <a class="btn btn-outline-secondary btn-sm" style="background-color:#fff387" type="button" title="Se" asp-page="View" asp-route-id="@instructor.Id"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-outline-primary btn-sm" style="background-color:#fff387" type="button" title="Ændre" asp-page="Edit" asp-route-id="@instructor.Id"><i class="fa fa-edit"></i></a>
+                                @if (instructor != null)
+                                {
+                                    <a class="btn btn-outline-danger btn-sm" style="background-color:#fff387" type="button" title="Slet" asp-page="Delete" asp-route-id="@instructor.Id"><i class="fa fa-trash"></i></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<p>
+    <a class="btn btn-outline-basic mt-3" style="background-color:#fff387" asp-page="CreateInstructor"> Opret en ny Underviser </a>
+</p>

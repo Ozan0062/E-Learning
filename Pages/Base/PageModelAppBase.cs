@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 /// A page model will "manipulate" (i.e. access and/or create) a data entity of type TData.
 /// </summary>
 /// <typeparam name="TData">Type of data being manipulated by the page</typeparam>
+
 public class PageModelAppBase<TData> : PageModel 
+public class PageModelAppBase<TData> : PageModel
+
     where TData : class, IHasId, IUpdateFromOther<TData>, new()
 {
     public const string DefaultRedirectPage = "All";

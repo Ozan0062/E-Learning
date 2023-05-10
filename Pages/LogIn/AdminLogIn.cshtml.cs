@@ -7,11 +7,11 @@ using System.Security.Claims;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Reflection.Metadata;
 
-public class LogInPageModel : PageModel
+public class AdminLogInModel : PageModel
 {
-    private IUserDataService _userDataService;
+    private IAdminDataService _adminDataService;
 
-    public static User LoggedInUser { get; set; }
+    public static Admin LoggedInAdmin { get; set; }
 
     [BindProperty, DataType(DataType.EmailAddress)]
     public string Email { get; set; }
@@ -23,15 +23,15 @@ public class LogInPageModel : PageModel
 
     public string Message { get; set; }
 
-    public LogInPageModel(IUserDataService userDataService)
+    public AdminLogInModel(IAdminDataService adminDataService)
     {
-        _userDataService = userDataService;
+        _adminDataService = adminDataService;
     }
     public async Task<IActionResult> OnPost()
     {
-        LoggedInUser = _userDataService.VerifyUser(Email, Password);
+        LoggedInAdmin = _adminDataService.VerifyAdmin(Email, Password);
 
-        if (LoggedInUser == null)
+        if (LoggedInAdmin == null)
         {
             Message = "Invalid attempt";
             return Page();
@@ -40,17 +40,17 @@ public class LogInPageModel : PageModel
         // Log in with identity
         await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
-            BuildClaimsPrincipal(LoggedInUser));
+            BuildClaimsPrincipal(LoggedInAdmin));
 
         return RedirectToPage("/Index");
     }
 
 
-    private ClaimsPrincipal BuildClaimsPrincipal(User user)
+    private ClaimsPrincipal BuildClaimsPrincipal(Admin admin)
     {
         // Build Claims
         List<Claim> claims = new List<Claim> {
-          new Claim(ClaimTypes.Email, user.Email) };
+          new Claim(ClaimTypes.Email, admin.Email) };
 
         // Create claims-based identity
         ClaimsIdentity claimsIdentity = new ClaimsIdentity(
@@ -63,4 +63,5 @@ public class LogInPageModel : PageModel
     }
 
 }
+
 

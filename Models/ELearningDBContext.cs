@@ -17,6 +17,9 @@ public partial class ELearningDBContext : DbContext
 
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Admin> Admins { get; set; }
+    public virtual DbSet<Instructor> Instructors { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -34,6 +37,7 @@ public partial class ELearningDBContext : DbContext
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(u => u.Id);
+
         });
 
 		modelBuilder.Entity<Course>(entity =>
@@ -42,6 +46,20 @@ public partial class ELearningDBContext : DbContext
 		});
 
 		OnModelCreatingPartial(modelBuilder);
+        });
+
+        modelBuilder.Entity<Admin>(entity =>
+        {
+            entity.HasKey(a => a.Id);
+        });
+
+        modelBuilder.Entity<Instructor>(entity =>
+        {
+            entity.HasKey(i => i.Id);
+        });
+
+
+        OnModelCreatingPartial(modelBuilder);
     }
 
 

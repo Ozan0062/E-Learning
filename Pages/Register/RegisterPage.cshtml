@@ -1,0 +1,54 @@
+﻿@page
+@model RegisterPageModel
+@{
+}
+
+<h2 class="display-6 mb-3 text-center">Opret Bruger</h2>
+
+<div class="mycontainer_container">
+    <form method="post">
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Name" class="control-label "></label>
+            <input asp-for="@Model.Data.Name" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Email" class="control-label "></label>
+            <input asp-for="@Model.Data.Email" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Password" class="control-label"></label>
+            <input asp-for="@Model.Data.Password" class="form-control" />
+            <input type="checkbox" onclick="showPassword()"> Vis adgangskode
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.Address" class="control-label "></label>
+            <input asp-for="@Model.Data.Address" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.City" class="control-label "></label>
+            <input asp-for="@Model.Data.City" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.PostalCode" class="control-label "></label>
+            <input asp-for="@Model.Data.PostalCode" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="@Model.Data.PhoneNumber" class="control-label "></label>
+            <input asp-for="@Model.Data.PhoneNumber" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <input type="submit" value="Opret Bruger" class="btn btn-basic" style="background-color:#fff387" />
+        </div>
+        <div class="row">
+            <div class="col-5"><hr></div>
+            <div class="col-1 text-centre">ELLER</div>
+            <div class="col-5"><hr></div>
+        </div>
+
+        <div>
+            <p>
+                <a id="login" class="a-link" asp-page="./LogInPage">Log ind</a>
+            </p>
+        </div>
+    </form>
+</div>
