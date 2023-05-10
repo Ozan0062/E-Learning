@@ -39,10 +39,22 @@ public partial class ELearningDBContext : DbContext
             entity.HasKey(e => e.Id);
         });
 
-        //Færdig
+		modelBuilder.Entity<Course>(entity =>
+		{
+			entity.HasKey(c => c.Id);
+		});
 
+		modelBuilder.Entity<Admin>(entity =>
+		{
+			entity.HasKey(a => a.Id);
+		});
 
-        OnModelCreatingPartial(modelBuilder);
+		modelBuilder.Entity<User>(entity =>
+		{
+			entity.HasKey(i => i.Id);
+		});
+
+		OnModelCreatingPartial(modelBuilder);
     }
 
 
