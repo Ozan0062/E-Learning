@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 /// </summary>
 /// <typeparam name="TData">Type of data being manipulated by the page</typeparam>
 
-public class PageModelAppBase<TData> : PageModel 
 public class PageModelAppBase<TData> : PageModel
 
     where TData : class, IHasId, IUpdateFromOther<TData>, new()

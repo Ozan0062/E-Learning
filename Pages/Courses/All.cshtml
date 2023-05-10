@@ -3,7 +3,7 @@
 @{
 }
 
-<h1 class="display-3 mb-5">Kursusoversigt</h1>
+<h1 class="display-6 mb-3 text-center">Kursusoversigt</h1>
 
 <div class="container">
     <div class="row">
@@ -16,9 +16,13 @@
                         <div class="d-flex justify-content-between">
                             <h5>@(course.Description)</h5>
                             <div>
-                                <a class="btn btn-outline-secondary btn-sm" type="button" title="View" asp-page="View" asp-route-id="@course.Id"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-outline-primary btn-sm" type="button" title="Edit" asp-page="Edit" asp-route-id="@course.Id"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-outline-danger btn-sm" type="button" title="Delete" asp-page="Delete" asp-route-id="@course.Id"><i class="fa fa-trash"></i></a>
+                                @if (AdminLogInModel.LoggedInAdmin != null)
+                                {
+                                    <a class="btn btn-outline-secondary btn-sm" type="button" style="background-color:#fff387" title="View" asp-page="View" asp-route-id="@course.Id"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@course.Id"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@course.Id"><i class="fa fa-trash"></i></a>
+                      
+                                }
                             </div>
                         </div>
                     </div>
@@ -28,6 +32,10 @@
     </div>
 </div>
 
-<p>
-    <a class="btn btn-outline-primary mt-3" asp-page="Create"> Opret nyt kursus </a>
-</p>
+@if (AdminLogInModel.LoggedInAdmin != null)
+{
+    <p>
+        <a class="btn btn-outline-basic mt-3" style="background-color:#fff387" asp-page="Create"> Opret nyt kursus </a>
+    </p>
+
+}

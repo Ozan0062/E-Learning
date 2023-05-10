@@ -19,7 +19,7 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse justify-content-between">
+                <div class="collapse navbar-collapse justify-content-between">
                         <div class="mynav_navbar">
                         <div class="mynav_dropdown">
                             <button class="mynav_dropbtn">
@@ -57,20 +57,20 @@
                                 </div>
                             </div>
                         </div>
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav">
                     @if (AdminLogInModel.LoggedInAdmin != null)
                     {
-                        <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Admin/All"><button class="btn btn-basic" style="background-color:#fff387">Underviser</button></a>
                         </li>
-                        <li class="nav-item">
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page=""><button class="btn btn-basic" style="background-color:#fff387">Kursus</button></a>
-                            </li>
                         </li>
                     }
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Courses/All"><button class="btn btn-basic" style="background-color:#fff387">Kursus</button></a>
+                        </li>
                     </ul>
-                        <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ms-auto">
                         @{
                             if (LogInPageModel.LoggedInUser == null && InstructorLogInModel.LoggedInInstructor == null && AdminLogInModel.LoggedInAdmin == null) // No one logged in -> show "Log ind"
                             {
@@ -118,8 +118,6 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-
-            &copy; 2023 - E_Learning - <a asp-area="" asp-page="/Courses/All">Privacy</a>
             &copy; 2023 - Zealand E-Learning</a>
 
         </div>
