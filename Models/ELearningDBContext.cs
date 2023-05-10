@@ -33,7 +33,7 @@ public partial class ELearningDBContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id);
+            entity.HasKey(u => u.Id);
         });
 
         OnModelCreatingPartial(modelBuilder);
