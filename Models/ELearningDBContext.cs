@@ -60,6 +60,4 @@ public partial class ELearningDBContext : DbContext
     
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    // Silas PC
 }
