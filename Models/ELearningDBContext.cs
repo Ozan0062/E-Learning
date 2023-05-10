@@ -36,8 +36,7 @@ public partial class ELearningDBContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(u => u.Id);
-
+            entity.HasKey(e => e.Id);
         });
 
 		modelBuilder.Entity<Course>(entity =>
@@ -45,20 +44,17 @@ public partial class ELearningDBContext : DbContext
 			entity.HasKey(c => c.Id);
 		});
 
-        modelBuilder.Entity<Admin>(entity =>
-        {
-            entity.HasKey(a => a.Id);
-        });
+		modelBuilder.Entity<Admin>(entity =>
+		{
+			entity.HasKey(a => a.Id);
+		});
 
-        modelBuilder.Entity<Instructor>(entity =>
-        {
-            entity.HasKey(i => i.Id);
-        });
+		modelBuilder.Entity<User>(entity =>
+		{
+			entity.HasKey(i => i.Id);
+		});
 
-        //Færdig
-
-
-        OnModelCreatingPartial(modelBuilder);
+		OnModelCreatingPartial(modelBuilder);
     }
 
     
