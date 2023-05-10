@@ -60,23 +60,13 @@
                     <ul class="navbar-nav ms-auto">
                     @if (AdminLogInModel.LoggedInAdmin != null)
                     {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Underviser
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" asp-page="/Admin/CreateInstructor">Tilføj Underviser</a></li>
-                                <li><a class="dropdown-item">Slet Underviser</a></li>
-                            </ul>
+                        <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Admin/All"><button class="btn btn-basic" style="background-color:#fff387">Underviser</button></a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Kursus
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Tilføj Kursus</a></li>
-                                <li><a class="dropdown-item" href="#">Slet Kursus</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page=""><button class="btn btn-basic" style="background-color:#fff387">Kursus</button></a>
+                            </li>
                         </li>
                     }
                     </ul>

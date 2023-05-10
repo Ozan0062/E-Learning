@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace E_Learning.Pages.Admin
+public class DeleteModel : DeletePageModel<Instructor>
 {
-    public class DeleteModel : PageModel
+    public DeleteModel(IInstructorDataService dataService)
+        : base(dataService)
     {
-        public void OnGet()
-        {
-        }
     }
 }
