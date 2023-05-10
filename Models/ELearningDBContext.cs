@@ -39,6 +39,8 @@ public partial class ELearningDBContext : DbContext
             entity.HasKey(e => e.Id);
         });
 
+        //Færdig
+
 
         OnModelCreatingPartial(modelBuilder);
     }
