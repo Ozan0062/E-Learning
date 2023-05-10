@@ -38,3 +38,13 @@ CREATE TABLE [dbo].[Course] (
     [Description] NVARCHAR (MAX) NOT NULL
 );
 
+INSERT INTO [dbo].[Admin] (
+    [Id], [Name], [Email], [Password], [PhoneNumber]) 
+    VALUES (1, 'Admin', 'admin@gmail.com', 'admin', 12345678
+);
+
+CREATE TABLE [dbo].[Education] (
+    [Id]          INT            IDENTITY (1, 1) NOT NULL,
+    [Name]        NVARCHAR (MAX) NOT NULL
+);
+
