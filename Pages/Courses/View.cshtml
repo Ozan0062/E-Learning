@@ -1,0 +1,25 @@
+﻿@page
+@model E_Learning.Pages.Courses.ViewModel
+@{
+}
+
+<h1 class="display-3 mb-5">Vis kursus</h1>
+
+<form method="get">
+	<div class="form-group mb-3" hidden>
+		<label asp-for="@Model.Data.Id" class="control-label"></label>
+		<input asp-for="@Model.Data.Id" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Data.Name" class="control-label"></label>
+		<input asp-for="@Model.Data.Name" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Data.Description" class="control-label"></label>
+		<input asp-for="@Model.Data.Description" class="form-control" readonly="@(true)" />
+	</div>
+
+	<p>
+		<a class="btn btn-outline-primary mt-3" asp-page="All">Tilbage til kursus oversigt</a>
+	</p>
+</form>

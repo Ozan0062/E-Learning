@@ -27,6 +27,7 @@ public class CreatePageModel<T> : PageModelAppBase<T>
         }
 
 
+
         // Submit data to data service
         _dataService.Create(Data);
 
