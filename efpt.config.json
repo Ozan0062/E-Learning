@@ -27,6 +27,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Exercise]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Instructor]",
          "ObjectType": 0
       },

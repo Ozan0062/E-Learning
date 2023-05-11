@@ -7,24 +7,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 
-[Table("Course")]
-public partial class Course
+[Table("Exercise")]
+public partial class Exercise
 {
     [Key]
     public int Id { get; set; }
 
-    public int EducationId { get; set; }
+    public int CourseId { get; set; }
 
     [Required]
     public string Name { get; set; }
 
+    public string Purpose { get; set; }
+
     [Required]
     public string Description { get; set; }
 
-    [ForeignKey("EducationId")]
-    [InverseProperty("Courses")]
-    public virtual Education Education { get; set; }
+    [Required]
+    public string Step { get; set; }
 
-    [InverseProperty("Course")]
-    public virtual ICollection<Exercise> Exercises { get; } = new List<Exercise>();
+    public string Hint { get; set; }
+
+    [ForeignKey("CourseId")]
+    [InverseProperty("Exercises")]
+    public virtual Course Course { get; set; }
 }
