@@ -19,6 +19,7 @@ builder.Services.AddSingleton<ICourseDataService, EFCCourseDataService>();
 builder.Services.AddSingleton<IAdminDataService, EFCAdminDataService>();
 builder.Services.AddSingleton<IInstructorDataService, EFCInstructorDataService>();
 builder.Services.AddSingleton<IEducationDataService, EFCEducationDataService>();
+builder.Services.AddSingleton<IExerciseDataService, EFCExerciseDataService>();
 
 
 
