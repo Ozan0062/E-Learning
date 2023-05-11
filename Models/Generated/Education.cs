@@ -16,4 +16,5 @@ public partial class Education
 
     [Required]
     public string Name { get; set; }
+
 }

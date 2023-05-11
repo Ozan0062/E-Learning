@@ -23,7 +23,6 @@ public partial class Course
     public string Description { get; set; }
 
     [ForeignKey("EducationId")]
-    [InverseProperty("Educations")]
     public virtual Education Education { get; set; }
 }
 
