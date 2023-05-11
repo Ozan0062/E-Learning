@@ -32,10 +32,6 @@ public partial class ELearningDBContext : DbContext
         //optionsBuilder.UseSqlServer("Server=mssql9.unoeuro.com; Database=fabgras_dk_db_elearning; User ID=fabgras_dk;Password=pm4txrcBHhnFfRakG25y;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
     }
 
-		optionsBuilder.UseSqlServer(configuration.GetConnectionString("UserDB"));
-		//optionsBuilder.UseSqlServer("Server=mssql9.unoeuro.com; Database=fabgras_dk_db_elearning; User ID=fabgras_dk;Password=pm4txrcBHhnFfRakG25y;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-	}
-
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 
@@ -70,9 +66,6 @@ public partial class ELearningDBContext : DbContext
 	}
 
 
-
-        OnModelCreatingPartial(modelBuilder);
-    }
 
 
 

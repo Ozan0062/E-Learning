@@ -20,7 +20,7 @@ public partial class Course
     public string Description { get; set; }
 
 
-    [ForeignKey("EducationId")]
-    public virtual Education Education { get; set; }
+    [ForeignKey("Education")]
+    public virtual Education EducationId { get; set; }
 
 }
