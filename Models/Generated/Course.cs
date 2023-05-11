@@ -14,24 +14,13 @@ public partial class Course
     public int Id { get; set; }
 
     [Required]
-    public int EducationId { get; set; }
-
-    [Required]
     public string Name { get; set; }
 
     [Required]
     public string Description { get; set; }
 
+
     [ForeignKey("EducationId")]
     public virtual Education Education { get; set; }
-}
 
-[Table("Education")]
-public partial class Education
-{
-    [Key]
-    public int Id { get; set; }
-
-    [Required]
-    public string Name { get; set; }
 }

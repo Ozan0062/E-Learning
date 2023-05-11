@@ -22,13 +22,15 @@ public partial class ELearningDBContext : DbContext
 
 	public virtual DbSet<Education> Educations { get; set; }
 
-
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
 		IConfigurationRoot configuration = new ConfigurationBuilder()
 			.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
 			.AddJsonFile("appsettings.json")
 			.Build();
+        optionsBuilder.UseSqlServer(configuration.GetConnectionString("UserDB"));
+        //optionsBuilder.UseSqlServer("Server=mssql9.unoeuro.com; Database=fabgras_dk_db_elearning; User ID=fabgras_dk;Password=pm4txrcBHhnFfRakG25y;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+    }
 
 		optionsBuilder.UseSqlServer(configuration.GetConnectionString("UserDB"));
 		//optionsBuilder.UseSqlServer("Server=mssql9.unoeuro.com; Database=fabgras_dk_db_elearning; User ID=fabgras_dk;Password=pm4txrcBHhnFfRakG25y;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
@@ -42,20 +44,20 @@ public partial class ELearningDBContext : DbContext
 			entity.HasKey(e => e.Id);
 		});
 
-		modelBuilder.Entity<Course>(entity =>
-		{
-			entity.HasKey(c => c.Id);
-		});
+        modelBuilder.Entity<Course>(entity =>
+        {
+            entity.HasKey(c => c.Id);
+        });
 
-		modelBuilder.Entity<Admin>(entity =>
-		{
-			entity.HasKey(a => a.Id);
-		});
+        modelBuilder.Entity<Admin>(entity =>
+        {
+            entity.HasKey(a => a.Id);
+        });
 
-		modelBuilder.Entity<User>(entity =>
-		{
-			entity.HasKey(i => i.Id);
-		});
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(i => i.Id);
+        });
 
 		modelBuilder.Entity<Education>(entity =>
 		{
@@ -66,6 +68,12 @@ public partial class ELearningDBContext : DbContext
 
 		OnModelCreatingPartial(modelBuilder);
 	}
+
+
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
 
 
 
