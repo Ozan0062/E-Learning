@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-
 [Table("Education")]
 public partial class Education
 {
@@ -16,4 +15,6 @@ public partial class Education
     [Required]
     public string Name { get; set; }
 
+    [InverseProperty("Education")]
+    public virtual ICollection<Course> Courses { get; } = new List<Course>();
 }

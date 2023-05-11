@@ -6,22 +6,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-
-[Table("Course")]
-public partial class Course
+[Table("Admin")]
+public partial class Admin
 {
     [Key]
     public int Id { get; set; }
-
-    public int EducationId { get; set; }
 
     [Required]
     public string Name { get; set; }
 
     [Required]
-    public string Description { get; set; }
+    public string Email { get; set; }
 
-    [ForeignKey("EducationId")]
-    [InverseProperty("Courses")]
-    public virtual Education Education { get; set; }
+    [Required]
+    public string Password { get; set; }
+
+    public int PhoneNumber { get; set; }
 }
