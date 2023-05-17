@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-
 [Table("Course")]
 public partial class Course
 {
@@ -27,4 +26,7 @@ public partial class Course
 
     [InverseProperty("Course")]
     public virtual ICollection<Exercise> Exercises { get; } = new List<Exercise>();
+
+    [InverseProperty("Course")]
+    public virtual ICollection<Favorite> Favorites { get; } = new List<Favorite>();
 }

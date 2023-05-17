@@ -28,6 +28,7 @@ builder.Services.AddSingleton<IAdminDataService, EFCAdminDataService>();
 builder.Services.AddSingleton<IInstructorDataService, EFCInstructorDataService>();
 builder.Services.AddSingleton<IEducationDataService, EFCEducationDataService>();
 builder.Services.AddSingleton<IExerciseDataService, EFCExerciseDataService>();
+builder.Services.AddSingleton<IFavoriteDataService, EFCFavoriteDataService>();
 
 // Add DbContext
 builder.Services.AddDbContext<ELearningDBContext>(options =>

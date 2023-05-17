@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-
 [Table("Exercise")]
 public partial class Exercise
 {
@@ -27,6 +26,15 @@ public partial class Exercise
     public string Step { get; set; }
 
     public string Hint { get; set; }
+
+    [StringLength(50)]
+    [Unicode(false)]
+    public string FileName { get; set; }
+
+    [StringLength(200)]
+    public string ContentType { get; set; }
+
+    public byte[] Data { get; set; }
 
     [ForeignKey("CourseId")]
     [InverseProperty("Exercises")]

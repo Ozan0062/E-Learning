@@ -6,20 +6,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-[Table("Instructor")]
-public partial class Instructor
+
+[Table("Favorite")]
+public partial class Favorite
 {
     [Key]
     public int Id { get; set; }
 
-    [Required]
-    public string Name { get; set; }
+    public int? UserId { get; set; }
 
-    [Required]
-    public string Email { get; set; }
+    public int? CourseId { get; set; }
 
-    [Required]
-    public string Password { get; set; }
+    [ForeignKey("CourseId")]
+    [InverseProperty("Favorites")]
+    public virtual Course Course { get; set; }
 
-    public int PhoneNumber { get; set; }
+    [ForeignKey("UserId")]
+    [InverseProperty("Favorites")]
+    public virtual User User { get; set; }
 }
