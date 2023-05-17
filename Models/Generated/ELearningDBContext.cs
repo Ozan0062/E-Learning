@@ -22,6 +22,7 @@ public partial class ELearningDBContext : DbContext
     public virtual DbSet<Education> Education { get; set; }
 
 
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         IConfigurationRoot configuration = new ConfigurationBuilder()
