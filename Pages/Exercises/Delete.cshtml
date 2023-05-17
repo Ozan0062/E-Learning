@@ -1,0 +1,14 @@
+﻿@page
+@model E_Learning.Pages.Exercises.DeleteModel
+@{
+}
+
+<h1 class="display-3 mb-5">Er du sikker på du vil slette uddannelsen?</h1>
+
+<div class="alert alert-danger">
+	<h5>Are you sure you want to delete @Model.Data.Name (Uddannelse)</h5>
+	<form method="post">
+		<button type="submit" class="btn btn-outline-danger mt-3" style="background-color:#fff387">Ja</button>
+		<a class="btn btn-outline-basic mt-3" style="background-color:#fff387" asp-page="/Privacy/All">Nej</a>
+	</form>
+</div>
