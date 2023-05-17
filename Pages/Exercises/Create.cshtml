@@ -17,6 +17,21 @@
 		<span asp-validation-for="@Model.Data.Description" class="text-danger"></span>
 	</div>
 	<div class="form-group">
+		<label asp-for="@Model.Data.Purpose" class="control-label"></label>
+		<input asp-for="@Model.Data.Purpose" class="form-control" />
+		<span asp-validation-for="@Model.Data.Purpose" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="@Model.Data.Step" class="control-label"></label>
+		<textarea asp-for="@Model.Data.Step" id="tiny" class="form-control"></textarea>
+		<span asp-validation-for="@Model.Data.Step" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="@Model.Data.Hint" class="control-label"></label>
+		<textarea asp-for="@Model.Data.Hint" id="tiny" class="form-control"></textarea>
+		<span asp-validation-for="@Model.Data.Hint" class="text-danger"></span>
+	</div>
+	<div class="form-group">
 		<label asp-for="@Model.Data.CourseId" class="control-label"></label>
 		<input asp-for="@Model.Data.CourseId" class="form-control" />
 		<span asp-validation-for="@Model.Data.CourseId" class="text-danger"></span>
