@@ -18,7 +18,6 @@
 	</div>
 		<div class="form-group">
 			<label asp-for="@Model.Data.EducationId" class="control-label"></label>
-		    <select class="form-control" id="exampleFormControlSelect1">
 			<select asp-for="@Model.Data.EducationId" asp-items="@Model.EducationList" class="form-control"></select>
 			<span asp-validation-for="@Model.Data.EducationId" class="text-danger"></span>
 		
