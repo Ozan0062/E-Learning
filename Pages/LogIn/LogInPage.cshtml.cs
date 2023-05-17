@@ -42,7 +42,7 @@ public class LogInPageModel : PageModel
             CookieAuthenticationDefaults.AuthenticationScheme,
             BuildClaimsPrincipal(LoggedInUser));
 
-        return RedirectToPage("/Index");
+        return RedirectToPage("/Profile/ProfilePage");
     }
 
 
