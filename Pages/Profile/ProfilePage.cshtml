@@ -1,4 +1,8 @@
 ﻿@page
-@model E_Learning.Pages.Profile.ProfilePageModel
+@model ProfilePageModel
 @{
+    ViewData["Title"] = "Profile";
 }
+
+<h1>Welcome to your profile, @LogInPageModel.LoggedInUser.Name</h1>
+<!-- Display user-specific profile information here -->
