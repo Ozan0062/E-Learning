@@ -4,6 +4,6 @@ public class CreateInstructorModel : CreatePageModel<Instructor>
             : base(instructorDataService, "/Index")
         {
         }
-    }
+}
 
 

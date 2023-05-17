@@ -20,9 +20,10 @@ public partial class ELearningDBContext : DbContext
 	public virtual DbSet<Instructor> Instructors { get; set; }
 	public virtual DbSet<Course> Courses { get; set; }
 
-	public virtual DbSet<Education> Educations { get; set; }
+	public virtual DbSet<Education> Education { get; set; }
 
-	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
 		IConfigurationRoot configuration = new ConfigurationBuilder()
 			.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
@@ -37,7 +38,7 @@ public partial class ELearningDBContext : DbContext
 
 		modelBuilder.Entity<User>(entity =>
 		{
-			entity.HasKey(e => e.Id);
+			entity.HasKey(u => u.Id);
 		});
 
         modelBuilder.Entity<Course>(entity =>
@@ -50,14 +51,9 @@ public partial class ELearningDBContext : DbContext
             entity.HasKey(a => a.Id);
         });
 
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.HasKey(i => i.Id);
-        });
-
 		modelBuilder.Entity<Education>(entity =>
 		{
-			entity.HasKey(t => t.Id);
+			entity.HasKey(e => e.Id);
 		});
 
         modelBuilder.Entity<Exercise>(entity =>
