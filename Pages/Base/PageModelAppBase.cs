@@ -16,10 +16,12 @@ public class PageModelAppBase<TData> : PageModel
     public const string DefaultRedirectPage = "All";
     public const string DefaultErrorPage = "/Error";
 
-    /// <summary>
-    /// Data service reference corresponding to the data entity type
-    /// </summary>
-    protected IDataService<TData> _dataService; 
+
+
+	/// <summary>
+	/// Data service reference corresponding to the data entity type
+	/// </summary>
+	protected IDataService<TData> _dataService; 
 
 
     /// <summary>

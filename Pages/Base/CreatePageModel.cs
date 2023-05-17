@@ -12,8 +12,9 @@ public class CreatePageModel<T> : PageModelAppBase<T>
         : base(dataService, onPostRedirectPage)
     {
     }
+	
 
-    public virtual IActionResult OnGet()
+	public virtual IActionResult OnGet()
     {
         return Page();
     }
