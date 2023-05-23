@@ -1,29 +1,27 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 public class ProfilePageModel : PageModel
 {
     private readonly IUserDataService _userDataService;
+    private readonly IFavoriteDataService _favoriteDataService;
 
-    public ProfilePageModel(IUserDataService userDataService)
+    public ProfilePageModel(IUserDataService userDataService, IFavoriteDataService favoriteDataService) 
     {
         _userDataService = userDataService;
+        _favoriteDataService = favoriteDataService;
     }
 
     public User LoggedInUser { get; set; }
+    public List<Course> FavoriteCourses { get; set; }
+ 
+    public void OnGet(int userId)
+    {
+        userId = LogInPageModel.LoggedInUser.Id;
 
-    //public void OnGet()
-    //{
-    //    LoggedInUser = GetLoggedInUser();
-    //}
-
-    //private User GetLoggedInUser()
-    //{
-    //    // Logic to retrieve the logged-in user from the data service
-    //    // You can use the HttpContext.User.Identity.Name or any other identifier to fetch the user data
-    //    // Replace the following code with your own logic
-    //    string loggedInUserName = User.Identity.Name;
-    //    LoggedInUser = _userDataService.VerifyUser(providedEmail, Password);
-    //    return loggedInUser;
-    //}
+        FavoriteCourses = _favoriteDataService.Favorite
+            .Where(f => f.UserId == userId)
+            .Select(f => f.Course)
+            .ToList();
+    }
 }
