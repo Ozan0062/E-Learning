@@ -9,27 +9,31 @@
     <div class="row">
         @foreach (var exercise in Model.Data)
         {
-                <div class="card mb-4 shadow">
-                    <div class="card-body">
-                        <h2 class="card-title">Opgave: @exercise.Name</h2>
-                        <p class="card-text">
-                            <strong>Formål:</strong> @exercise.Purpose <br>
-                            <strong>Beskrivelse:</strong> @exercise.Description <br>
+            <div class="card mb-4 shadow">
+                <div class="card-body">
+                    <h2 class="card-title">Opgave: @exercise.Name</h2>
+                    <p class="card-text">
+                        <strong>Formål:</strong> @exercise.Purpose <br>
+                        <strong>Beskrivelse:</strong> @exercise.Description <br>
 
-                            <strong>Trin:</strong> @Html.Raw(exercise.Step)
+                        <strong>Trin:</strong> @Html.Raw(exercise.Step)
 
-                            <strong>Hints:</strong> @Html.Raw(exercise.Hint)
-                        </p>
+                        <strong>Hints:</strong> @Html.Raw(exercise.Hint)
+                    </p>
 
-                        @if (AdminLogInModel.LoggedInAdmin != null)
-                        {
-                            <a class="btn btn-outline-secondary btn-sm" type="button" style="background-color:#fff387" title="View" asp-page="View" asp-route-id="@exercise.Id"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@exercise.Id"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@exercise.Id"><i class="fa fa-trash"></i></a>
-                        }
-                    </div>
+                    @if (AdminLogInModel.LoggedInAdmin != null)
+                    {
+                        <a class="btn btn-outline-secondary btn-sm" type="button" style="background-color:#fff387" title="View" asp-page="View" asp-route-id="@exercise.Id"><i class="fa fa-eye"></i></a>
+                        <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@exercise.Id"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@exercise.Id"><i class="fa fa-trash"></i></a>
+                    }
+                    @if (!string.IsNullOrEmpty(exercise.FileName))
+                    {
+                        <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
+                    }
                 </div>
-       
+            </div>
+
         }
     </div>
 </div>
@@ -43,5 +47,3 @@
     </p>
 
 }
-
-
