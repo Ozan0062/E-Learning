@@ -7,9 +7,18 @@
 <h1>Velkommen til din profil, @LogInPageModel.LoggedInUser.Name</h1>
 <!-- Display user-specific profile information here -->
 
-<button class="btn btn-outline-info btn-lg square-button" type="submit" style="background-color:#fff387;">
-    <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto;"></i>
-</button>
+<div class="d-flex">
+    <button class="btn btn-outline-info btn-lg square-button" type="submit" style="background-color:#fff387;">
+        <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto;"></i>
+    </button>
+
+    <form method="get" asp-page="/ExerciseStatuses/All">
+        <button class="btn btn-outline-info btn-lg square-button" type="submit" style="background-color:#fff387;">
+            <i class="fa fa-area-chart fa-3x" style="display: block; margin: 0 auto;"></i>
+        </button>
+    </form>
+
+</div>
 
 <style>
     .square-button {

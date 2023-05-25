@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var exercise in Model.FavoriteExercisesDone)
+                    @foreach (var exercise in Model.ExercisesDone)
                     {
                         <tr>
                             <td style="word-wrap: break-word;">@exercise.Name</td>
@@ -30,7 +30,7 @@
                                     <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
                                 }
                             </td>
-                            <td><button class="btn btn-success">Færdig</button></td>
+                            <td><button class="btn btn-fail"></button></td>
                         </tr>
                     }
                 </tbody>

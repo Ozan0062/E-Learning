@@ -5,7 +5,7 @@ namespace E_Learning.Pages.ExerciseStatuses
 {
     public class AllModel : PageModel
     {
-        public List<Exercise> FavoriteExercisesDone { get; set; } = new List<Exercise>();
+        public List<Exercise> ExercisesDone { get; set; } = new List<Exercise>();
 
         public void OnGet()
         {
