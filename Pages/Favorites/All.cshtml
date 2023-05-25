@@ -18,9 +18,12 @@
                 <h5>@(course.Course.Name) </h5>
                 <div class="d-flex justify-content-between">
                     <div>
-                        <a class="btn btn-outline-secondary btn-sm" type="button" title="View" asp-page="View" asp-route-id="@course.Id"><i class="fa fa-eye"></i></a>
-                        <a class="btn btn-outline-primary btn-sm" type="button" title="Edit" asp-page="Edit" asp-route-id="@course.Id"><i class="fa fa-edit"></i></a>
-                        <a class="btn btn-outline-danger btn-sm" type="button" title="Delete" asp-page="Delete" asp-route-id="@course.Id"><i class="fa fa-trash"></i></a>
+                        @foreach (var exercise in course.Course.Exercises)
+                        {
+                            <h6>@exercise.Name</h6>
+                            <p>@exercise.Description</p>
+                            <!-- You can include other exercise details here -->
+                        }
                     </div>
                 </div>
             }
