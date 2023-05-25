@@ -1,0 +1,40 @@
+﻿@page
+@model E_Learning.Pages.ExerciseStatuses.AllModel
+
+<h1 class="display-3 mb-5">Tilføjede opgaver</h1>
+
+        
+<div class="d-flex justify-content-between">
+    <div style="width:100%;">
+        <div style="width:100%; overflow-x: auto;">
+            <table class="table" style="table-layout: fixed; width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 20%">Name</th>
+                        <th scope="col" style="width: 20%">Description</th>
+                        <th scope="col" style="width: 40%">Purpose</th>
+                        <th scope="col" style="width: 10%">Download</th>
+                        <th scope="col" style="width: 10%">Færdig</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var exercise in Model.FavoriteExercisesDone)
+                    {
+                        <tr>
+                            <td style="word-wrap: break-word;">@exercise.Name</td>
+                            <td style="word-wrap: break-word;">@exercise.Description</td>
+                            <td style="word-wrap: break-word;">@exercise.Purpose</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(exercise.FileName))
+                                {
+                                    <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
+                                }
+                            </td>
+                            <td><button class="btn btn-success">Færdig</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -34,7 +34,15 @@
                                                 <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
                                             }
                                         </td>
-                                        <td><button class="btn btn-success">Færdig</button></td>
+                                        <td>
+                                         
+                                            <form method="post" asp-page-handler="AddToDone" asp-route-exerciseId="@exercise.Id">
+                                                <button class="btn btn-outline-info btn-sm" type="submit" style="background-color:#fff387" title="Done">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            </form>
+
+                                        </td>
                                     </tr>
                                 }
                             </tbody>

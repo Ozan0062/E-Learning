@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace E_Learning.Pages.Favorites
 {
@@ -8,16 +11,25 @@ namespace E_Learning.Pages.Favorites
     {
         private readonly IFavoriteDataService _favoriteDataService;
         private readonly ICourseDataService _courseDataService;
+        private readonly IExerciseStatusDataService _exerciseStatusDataService;
+        private readonly IExerciseDataService _exerciseDataService;
         private readonly ELearningDBContext _context;
 
-
         public List<Course> FavoriteCourses { get; set; } = new List<Course>();
-
-        public AllModel(IFavoriteDataService favoriteDataService, ICourseDataService courseDataService, ELearningDBContext context)
+        public int Status { get; set; }
+        public AllModel(IFavoriteDataService favoriteDataService,
+                        ICourseDataService courseDataService,
+                        IExerciseDataService exerciseDataService,
+                        IExerciseStatusDataService exerciseStatusDataService,
+                        ELearningDBContext context)
         {
             _favoriteDataService = favoriteDataService;
             _courseDataService = courseDataService;
+            _exerciseDataService = exerciseDataService;
+            _exerciseStatusDataService = exerciseStatusDataService;
             _context = context;
+
+            this._exerciseStatusDataService = exerciseStatusDataService;
         }
 
         public void OnGet()
@@ -48,6 +60,23 @@ namespace E_Learning.Pages.Favorites
             return File(exercise.Data, exercise.ContentType, exercise.FileName);
         }
 
+        public async Task<IActionResult> OnPostAddToDoneAsync(int exerciseId)
+        {
+            if (LogInPageModel.LoggedInUser != null)
+            {
+                var exerciseStatus = new ExerciseStatus
+                {
+                    UserId = LogInPageModel.LoggedInUser.Id,
+                    ExerciseId = exerciseId,
+                    Status = 1
+                };
 
+                this._exerciseStatusDataService.Create(exerciseStatus);
+
+                return RedirectToPage("/Profile/ProfilePage");
+            }
+
+            return Unauthorized();
+        }
     }
 }
