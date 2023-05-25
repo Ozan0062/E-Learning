@@ -28,7 +28,12 @@
                                         <td style="word-wrap: break-word;">@exercise.Name</td>
                                         <td style="word-wrap: break-word;">@exercise.Description</td>
                                         <td style="word-wrap: break-word;">@exercise.Purpose</td>
-                                        <td><button class="btn btn-primary">Download</button></td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(exercise.FileName))
+                                            {
+                                                <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
+                                            }
+                                        </td>
                                         <td><button class="btn btn-success">Færdig</button></td>
                                     </tr>
                                 }

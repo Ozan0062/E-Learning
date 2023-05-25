@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Learning.Pages.Favorites
 {
@@ -7,13 +8,16 @@ namespace E_Learning.Pages.Favorites
     {
         private readonly IFavoriteDataService _favoriteDataService;
         private readonly ICourseDataService _courseDataService;
+        private readonly ELearningDBContext _context;
+
 
         public List<Course> FavoriteCourses { get; set; } = new List<Course>();
 
-        public AllModel(IFavoriteDataService favoriteDataService, ICourseDataService courseDataService)
+        public AllModel(IFavoriteDataService favoriteDataService, ICourseDataService courseDataService, ELearningDBContext context)
         {
             _favoriteDataService = favoriteDataService;
             _courseDataService = courseDataService;
+            _context = context;
         }
 
         public void OnGet()
@@ -30,6 +34,18 @@ namespace E_Learning.Pages.Favorites
                     }
                 }
             }
+        }
+
+        public async Task<IActionResult> OnGetDownloadFileAsync(int id)
+        {
+            var exercise = await _context.Exercises.FindAsync(id);
+
+            if (exercise == null || exercise.Data == null)
+            {
+                return NotFound();
+            }
+
+            return File(exercise.Data, exercise.ContentType, exercise.FileName);
         }
 
 
