@@ -32,5 +32,8 @@ public partial class User
     public int PhoneNumber { get; set; }
 
     [InverseProperty("User")]
+    public virtual ICollection<ExerciseStatus> ExerciseStatuses { get; } = new List<ExerciseStatus>();
+
+    [InverseProperty("User")]
     public virtual ICollection<Favorite> Favorites { get; } = new List<Favorite>();
 }
