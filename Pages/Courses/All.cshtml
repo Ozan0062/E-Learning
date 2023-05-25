@@ -16,14 +16,14 @@
                         <div class="d-flex justify-content-between">
                             <h5>@(course.Description)</h5>
                             <div>
-                                @if (AdminLogInModel.LoggedInAdmin != null) // Tjek om brugeren er logget ind
+                                @if (AdminLogInModel.LoggedInAdmin != null) 
                                 {
                                     <a class="btn btn-outline-secondary btn-sm" type="button" style="background-color:#fff387" title="View" asp-page="View" asp-route-id="@course.Id"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@course.Id"><i class="fa fa-edit"></i></a>
                                     <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@course.Id"><i class="fa fa-trash"></i></a>
 
                                 }
-                                @if (LogInPageModel.LoggedInUser != null) // Tjek om brugeren er logget ind
+                                @if (LogInPageModel.LoggedInUser != null) 
                                 {
                                     <form method="post" asp-page-handler="AddToFavorites" asp-route-courseId="@course.Id">
                                         <button class="btn btn-outline-info btn-sm" type="submit" style="background-color:#fff387" title="Favorite">
