@@ -7,7 +7,8 @@ namespace E_Learning.Pages.Courses
     {
 		private readonly IFavoriteDataService favoriteDataService;
 
-		public AllModel(ICourseDataService dataService, IFavoriteDataService favoriteDataService)
+		public AllModel(ICourseDataService dataService, 
+                        IFavoriteDataService favoriteDataService)
             : base(dataService)
         {
 			this.favoriteDataService = favoriteDataService;
@@ -15,18 +16,14 @@ namespace E_Learning.Pages.Courses
 
         public async Task<IActionResult> OnPostAddToFavoritesAsync(int courseId)
         {
-            // Tjek om brugeren er logget ind
             if (LogInPageModel.LoggedInUser != null)
             {
-                // Opret en ny favoritlinje i din favorites-tabel
                 var favorite = new Favorite
                 {
                     UserId = LogInPageModel.LoggedInUser.Id, // Brug brugerens ID
                     CourseId = courseId // Brug det kursus-ID, der er forbundet med knappen
                 };
 
-                // Gem favoritten i din database eller foretag de nødvendige handlinger
-                // f.eks. ved hjælp af en service eller repository
                 this.favoriteDataService.Create(favorite);
 
                 // Tilføj logik for at håndtere succes eller fejl ved at tilføje favorit
