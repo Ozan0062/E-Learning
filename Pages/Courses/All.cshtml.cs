@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Learning.Pages.Courses
 {
+    // h
     public class AllModel : GetAllPageModel<Course>
     {
 		private readonly IFavoriteDataService favoriteDataService;
