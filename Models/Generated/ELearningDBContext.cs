@@ -54,6 +54,11 @@ public partial class ELearningDBContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Course__3214EC071FC71C0F");
 
             entity.HasOne(d => d.Education).WithMany(p => p.Courses).OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasMany(e => e.Exercises)
+                  .WithOne(p => p.Course)
+                  .HasForeignKey(p => p.CourseId)
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<Education>(entity =>

@@ -39,7 +39,6 @@ namespace E_Learning.Pages.Exercises
 				using (var memoryStream = new MemoryStream())
 				{
 					UploadedFile.CopyTo(memoryStream);
-					// Assuming "Data" is your Exercise object
 					Data.Data = memoryStream.ToArray();
 					Data.FileName = UploadedFile.FileName;
 					Data.ContentType = UploadedFile.ContentType;
