@@ -120,7 +120,13 @@
                                     @{
                                         if (LogInPageModel.LoggedInUser != null)
                                         {
-                                            <span>Bruger:</span> <span><b>@LogInPageModel.LoggedInUser.Name</b></span>
+                                            <form action="/Profile/ProfilePage">
+                                                <button class="btn btn-basic" style="background-color:#fff387">
+                                                    <span>Bruger:</span>
+                                                    <span><b>@LogInPageModel.LoggedInUser.Name</b></span>
+                                                </button>
+                                            </form>
+
                                         }
                                         else if (InstructorLogInModel.LoggedInInstructor != null)
                                         {
