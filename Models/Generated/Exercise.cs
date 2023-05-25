@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-
 [Table("Exercise")]
 public partial class Exercise
 {
@@ -42,4 +41,7 @@ public partial class Exercise
     [ForeignKey("CourseId")]
     [InverseProperty("Exercises")]
     public virtual Course Course { get; set; }
+
+    [InverseProperty("Exercise")]
+    public virtual ICollection<ExerciseStatus> ExerciseStatuses { get; } = new List<ExerciseStatus>();
 }

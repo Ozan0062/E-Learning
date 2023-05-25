@@ -5,9 +5,7 @@ public partial class Course : IHasId, IUpdateFromOther<Course>
     {
         Name = tOther.Name;
         Description = tOther.Description;
-        EducationId = tOther.EducationId;
-        
-
+        EducationId = tOther.EducationId; 
     }
 }
 
