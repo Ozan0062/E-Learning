@@ -10,40 +10,159 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff387;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="navbar-brand" href="/">
-                    <img src="~/Images/Home.png" width="19" height="15" alt="HomePage">
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link ml-3" href="#">SWD</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ml-3" href="#">IT og Økonomi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ml-3" href="#">Finansøkonomi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ml-3" href="#">Multimediedesign</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ml-3" href="#">Design</a>
-                </li>
             </ul>
         </div>
-    </nav>
 
 
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        position: relative;
+        height: 100vh;
+        background-image: url('https://www.zealand.dk/wp-content/uploads/2019/03/nytbyggeriikoege-sydoest.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 1.0;
+        filter: brightness(90%);
+    }
+
+        .header h1 {
+            position: absolute;
+            top: 5%;
+            left: 33.5%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        .header h4 {
+            position: absolute;
+            bottom: 27%;
+            left: 70.4%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        .header h6 {
+            position: absolute;
+            bottom: 23%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+    .content {
+        padding: 20px;
+    }
+</style>
+    @*Forside - Introduktion - Om Zealands E-Lærings Portal*@
+    <div class="header">
+        <h1 class="mb-3 text-center">Velkommen til Zealands E-lærings Portal</h1>
+        <h4 class="mb-3">Om Zealands E-Lærings Portal</h4>
+        <h6 class="mb-3 text-center">Test</h6>
+    </div>
+    
+   @*Forside - Hvad Zealands E-Lærings Portal tilbyder*@
+   <div class= "container mt-5">
+      <h2 class= "mb-3 text-center">Hvad Zealands E-Lærings Portal tilbyder </h2>
+        <p>Du kan vælge uddannelser på erhvervsakademisk niveau 
+           og læse videre på en Top-Up bachelor - 
+           eller du kan vælge en fuld professionsbachelor.
+        </p>     
+   </div>
+  
+    @*Uddannelser*@
+    <div class="row">
+        <div class="textbox">
+            <div class="col-md-4">
+                <h3>Erhvervsakademisk Uddannelse</h3>
+            <p>
+                Du kan vælge uddannelser på erhvervsakademisk niveau
+                og læse videre på en Top-Up bachelor -
+                eller du kan vælge en fuld professionsbachelor.
+            </p>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <h3>Top-Up Bachelor</h3>
+            <p>
+                Du kan vælge uddannelser på erhvervsakademisk niveau
+                og læse videre på en Top-Up bachelor -
+                eller du kan vælge en fuld professionsbachelor.
+            </p>
+            
+        </div>
+
+        <div class="col-md-4">
+                <h3>Professionsbachelor</h3>
+                <p>
+                    Du kan vælge uddannelser på erhvervsakademisk niveau
+                    og læse videre på en Top-Up bachelor -
+                    eller du kan vælge en fuld professionsbachelor.
+                </p>
+                
+        </div>
+
+        <div class="col-md-4">
+                    <h3>Efteruddannelse</h3>
+                    <p>
+                        Du kan vælge uddannelser på erhvervsakademisk niveau
+                        og læse videre på en Top-Up bachelor -
+                        eller du kan vælge en fuld professionsbachelor.
+                    </p>
+                    
+        </div>
+
+        <div class="col-md-4">
+                        <h3>Lederuddannelse</h3>
+                        <p>
+                            Du kan vælge uddannelser på erhvervsakademisk 
+                            og læse videre på en Top-Up bachelor -
+                            eller du kan vælge en fuld professionsbachelor.
+                        </p>
+                        
+        </div>
+
+        <div class="col-md-4">
+                        <h3>Kurser</h3>
+                        <p>
+                            Du kan vælge uddannelser på erhvervsakademisk niveau
+                            og læse videre på en Top-Up bachelor -
+                            eller du kan vælge en fuld professionsbachelor.
+                        </p>
+        </div>
+    </div>
+
+    @*Forside - Hvordan Zealands E-Lærings Portal uddanner de studerende*@
+    <div class="container mt-5">
+        <h2 class="mb-3 text-center">Hvordan Zealands E-Lærings Portal uddanner de studerende</h2>
+    </div>
 
 
-    <div class="container mt-3">
-        <h1>My Website</h1>
-        <p>Welcome to my website.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="display-6 mb-3 text-center">Erhvervslivet</h3>
+            <p> 
+                Du kan vælge uddannelser på erhvervsakademisk niveau
+                og læse videre på en Top-Up bachelor -
+                eller du kan vælge en fuld professionsbachelor.
+            </p>
+        </div>
+
+        <div class="col-md-6">
+                <h3>Udviklingsproces</h3>
+                <p>
+                    Du kan vælge uddannelser på erhvervsakademisk niveau
+                    og læse videre på en Top-Up bachelor -
+                    eller du kan vælge en fuld professionsbachelor.
+                </p>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js"></script>
@@ -52,4 +171,3 @@
 
 </body>
 </html>
-
