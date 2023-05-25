@@ -1,32 +1,42 @@
 ﻿@page
 @model E_Learning.Pages.Favorites.AllModel
-@{
-}
 
 <h1 class="display-3 mb-5">Tilføjede kurser</h1>
 
 <div class="container">
     <div class="row">
-        @foreach (var courseId in Model.Data
-        .Where(f => f.UserId == LogInPageModel.LoggedInUser.Id)
-        .Select(f => f.CourseId)
-        .Distinct())
+        @foreach (var course in Model.FavoriteCourses)
         {
-            var course = Model.Data.FirstOrDefault(f => f.CourseId == courseId);
-            if (course != null)
-            {
-                <h5>@(course.Course.Name) </h5>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        @foreach (var exercise in course.Course.Exercises)
-                        {
-                            <h6>@exercise.Name</h6>
-                            <p>@exercise.Description</p>
-                            <!-- You can include other exercise details here -->
-                        }
+            <h3 class="mb-3">@course.Name</h3> 
+            <div class="d-flex justify-content-between">
+                <div style="width:100%;">
+                    <div style="width:100%; overflow-x: auto;">
+                        <table class="table" style="table-layout: fixed; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 20%">Name</th>
+                                    <th scope="col" style="width: 20%">Description</th>
+                                    <th scope="col" style="width: 40%">Purpose</th>
+                                    <th scope="col" style="width: 10%">Download</th>
+                                    <th scope="col" style="width: 10%">Færdig</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var exercise in course.Exercises)
+                                {
+                                    <tr>
+                                        <td style="word-wrap: break-word;">@exercise.Name</td>
+                                        <td style="word-wrap: break-word;">@exercise.Description</td>
+                                        <td style="word-wrap: break-word;">@exercise.Purpose</td>
+                                        <td><button class="btn btn-primary">Download</button></td>
+                                        <td><button class="btn btn-success">Færdig</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            }
+            </div>
         }
     </div>
 </div>

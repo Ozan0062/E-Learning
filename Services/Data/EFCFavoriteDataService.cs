@@ -15,4 +15,14 @@ public class EFCFavoriteDataService : EFCDataServiceAppBase<Favorite>, IFavorite
             .Include(f => f.User)
             .Include(f => f.Course);
     }
+
+    public List<Favorite> GetFavoritesForUser(int userId)
+    {
+        using (var context = new ELearningDBContext())
+        {
+            return context.Favorites
+                .Where(f => f.UserId == userId)
+                .ToList();
+        }
+    }
 }

@@ -10,4 +10,14 @@ public class EFCCourseDataService : EFCDataServiceAppBase<Course>, ICourseDataSe
     }
 
 
+    public Course GetCourseWithExercises(int courseId)
+    {
+        using (var context = new ELearningDBContext())
+        {
+            return context.Courses
+                .Include(c => c.Exercises)
+                .FirstOrDefault(c => c.Id == courseId);
+        }
+    }
+
 }

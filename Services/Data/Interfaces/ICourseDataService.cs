@@ -1,5 +1,4 @@
-﻿
-
-public interface ICourseDataService : IDataService<Course>
+﻿public interface ICourseDataService : IDataService<Course>
 {
+    Course GetCourseWithExercises(int courseId);
 }
