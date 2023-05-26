@@ -16,7 +16,6 @@ namespace E_Learning.Pages.Favorites
         private readonly ELearningDBContext _context;
 
         public List<Course> FavoriteCourses { get; set; } = new List<Course>();
-        public int Status { get; set; } 
         public AllModel(IFavoriteDataService favoriteDataService,
                         ICourseDataService courseDataService,
                         IExerciseDataService exerciseDataService,

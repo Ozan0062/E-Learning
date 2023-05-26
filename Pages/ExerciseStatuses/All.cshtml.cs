@@ -4,10 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E_Learning.Pages.ExerciseStatuses
 {
-    public class AllModel : PageModel
+    public class AllModel : FavoritesPageModel
     {
-        private readonly IFavoriteDataService _favoriteDataService;
-        private readonly ICourseDataService _courseDataService;
         private readonly IExerciseStatusDataService _exerciseStatusDataService;
         private readonly IExerciseDataService _exerciseDataService;
         private readonly ELearningDBContext _context;
@@ -20,9 +18,8 @@ namespace E_Learning.Pages.ExerciseStatuses
                         IExerciseDataService exerciseDataService,
                         IExerciseStatusDataService exerciseStatusDataService,
                         ELearningDBContext context)
+            : base(favoriteDataService, courseDataService)
         {
-            _favoriteDataService = favoriteDataService;
-            _courseDataService = courseDataService;
             _exerciseDataService = exerciseDataService;
             _exerciseStatusDataService = exerciseStatusDataService;
             _context = context;
@@ -45,21 +42,7 @@ namespace E_Learning.Pages.ExerciseStatuses
                     }
                 }
             }
-
-            var favorites = _favoriteDataService.GetFavoritesForUser(LogInPageModel.LoggedInUser.Id);
-            foreach (var favorite in favorites)
-            {
-                if (favorite.CourseId.HasValue)
-                {
-                    var course = _courseDataService.GetCourseWithExercises(favorite.CourseId.Value);
-                    if (course != null && !FavoriteCourses.Any(c => c.Id == course.Id))
-                    {
-                        FavoriteCourses.Add(course);
-                    }
-                }
-            }
-
-
+            LoadFavoriteCourses();
         }
 
 
