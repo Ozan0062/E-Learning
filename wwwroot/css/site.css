@@ -150,6 +150,37 @@ a {
 }
 
 
+/*Css til billederne*/
+.btn-lg {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .btn-container .btn {
+        margin-right: 25px;
+    }
+
+.btn-lg h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.btn-lg img {
+    width: 200px;
+    height: 200px;
+}
+
+
 
 
 

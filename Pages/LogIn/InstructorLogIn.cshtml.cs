@@ -42,7 +42,7 @@ public class InstructorLogInModel : PageModel
             CookieAuthenticationDefaults.AuthenticationScheme,
             BuildClaimsPrincipal(LoggedInInstructor));
 
-        return RedirectToPage("/Index");
+        return RedirectToPage("/Profile/InstructorProfilePage");
     }
 
 

@@ -42,7 +42,7 @@ public class AdminLogInModel : PageModel
             CookieAuthenticationDefaults.AuthenticationScheme,
             BuildClaimsPrincipal(LoggedInAdmin));
 
-        return RedirectToPage("/Index");
+        return RedirectToPage("/Profile/AdminProfilePage");
     }
 
 

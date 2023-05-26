@@ -1,0 +1,57 @@
+﻿@page
+@model InstructorProfilePageModel
+@{
+}
+
+<h1>Velkommen til din profil, @InstructorLogInModel.LoggedInInstructor.Name</h1>
+<!-- Display user-specific profile information here -->
+
+<style>
+    .btn-lg {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .btn-container .btn {
+          margin-right: 25px;
+        }
+
+    .btn-lg h1 {
+        margin: 0;
+        font-size: 25px;
+    }
+
+    .btn-lg img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<div class="d-flex btn-container">
+    <a href="/Exercises/Create" class="btn btn-lg">
+        <img src="~/Images/plus.png" alt="Plus">
+        <h1 class="display-6 mb-3 text-center">Tilføj Opgave</h1>
+    </a>
+    <a href="/Exercises/All" class="btn btn-lg">
+        <img src="~/Images/Task.png" alt="Task">
+        <h1 class="display-6 mb-3 text-center">Opgaveoversigt</h1>
+    </a>
+    <a href="/Educations/All" class="btn btn-lg">
+        <img src="~/Images/education.png" alt="Task">
+        <h1 class="display-6 mb-3 text-center">Uddannelsesoversigt</h1>
+    </a>
+    <a href="/Courses/All" class="btn btn-lg">
+        <img src="~/Images/course.png" alt="Task">
+        <h1 class="display-6 mb-3 text-center">Kursus Oversigt</h1>
+    </a>
+</div>

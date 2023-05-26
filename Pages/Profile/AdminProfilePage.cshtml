@@ -1,0 +1,26 @@
+﻿@page
+@model AdminProfilePageModel
+@{
+}
+
+<h1>Velkommen til din profil, @AdminLogInModel.LoggedInAdmin.Name</h1>
+<!-- Display user-specific profile information here -->
+
+<div class="d-flex btn-container">
+    <a href="/Admin/All" class="btn btn-lg">
+        <img src="~/Images/instructor.png" alt="Plus">
+        <h1 class="display-6 mb-3 text-center">Underviser</h1>
+    </a>
+    <a href="/Exercises/All" class="btn btn-lg">
+        <img src="~/Images/Task.png" alt="Task">
+        <h1 class="display-6 mb-3 text-center">Opgaveoversigt</h1>
+    </a>
+    <a href="/Educations/All" class="btn btn-lg">
+        <img src="~/Images/education.png" alt="Task">
+        <h1 class="display-6 mb-3 text-center">Uddannelser</h1>
+    </a>
+    <a href="/Courses/All" class="btn btn-lg">
+        <img src="~/Images/course.png" alt="Task">
+        <h1 class="display-6 mb-3 text-center">Kurser</h1>
+    </a>
+</div>
