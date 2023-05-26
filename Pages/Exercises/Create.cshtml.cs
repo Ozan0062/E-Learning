@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Threading.Tasks;
 
-// F
 namespace E_Learning.Pages.Exercises
 {
 	public class CreateModel : CreatePageModel<Exercise>

@@ -73,7 +73,7 @@ namespace E_Learning.Pages.Favorites
 
                 this._exerciseStatusDataService.Create(exerciseStatus);
 
-                return RedirectToPage("/Profile/ProfilePage");
+                return RedirectToPage("/ExerciseStatuses/All");
             }
 
             return Unauthorized();

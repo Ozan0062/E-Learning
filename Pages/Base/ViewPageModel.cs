@@ -6,7 +6,7 @@
 public class ViewPageModel<T> : PageModelExistingData<T>
     where T : class, IHasId, IUpdateFromOther<T>, new()
 {
-    public ViewPageModel(IDataService<T> dataService) 
+	public ViewPageModel(IDataService<T> dataService) 
         : base(dataService)
     {
     }

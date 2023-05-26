@@ -7,61 +7,88 @@
 <h1>Velkommen til din profil, @LogInPageModel.LoggedInUser.Name</h1>
 <!-- Display user-specific profile information here -->
 
-@*<div class="d-flex">
-    <form method="get" asp-page="/Favorites/All">
-        <button class="btn btn-lg" type="submit" style="background-color:white; width: 350px; height: 350px; margin-right: 50px;">
-            <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto; color: #fff387"></i>
-        </button>
-    </form>
+@*<style>
+    .btn-lg {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0;
+    }
 
-    <form method="get" asp-page="/ExerciseStatuses/All">
-        <button class="btn btn-lg" type="submit" style="background-color:white; width: 500px; height: 350px; margin-right: 50px;">
-            <i class="fa fa-area-chart fa-3x" style="display: block; margin: 0 auto; color: #fff387"></i>
-        </button>
-    </form>
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+    }
 
-    <form method="get" asp-page="/ExerciseStatuses/All">
-        <button class="btn btn-lg" style="background-color:white; width: 350px; height: 350px;">
-            <i class="fa fa-plus fa-3x" style="display: block; margin: 0 auto; color: #fff387"></i>
-        </button>
-    </form>
+        .btn-container .btn {
+            margin-right: 25px;
+        }
+
+        .btn-lg h4 {
+            margin: 0;
+            font-size: 20px;
+        }
+</style>
+
+<div class="d-flex btn-container">
+    <a href="/Favorites/All" class="btn btn-lg" style= "display: flex; justify-content: center; align-items: center;">
+        <h4>Favoritter</h4>
+        <img src="~/Images/star.png" alt="Favorites" style="width: 200px; height: 200px;">
+    </a>
+
+    <a href="/ExerciseStatuses/All" class="btn btn-lg" style="display: flex; justify-content: center; align-items: center;">
+        <img src="~/Images/graph.png" alt="Exercise Statuses" style="width: 200px; height: 200px;">
+    </a>
+
+    <a href="/ExerciseStatuses/All" class="btn btn-lg" style="display: flex; justify-content: center; align-items: center;">
+        <img src="~/Images/plus.png" alt="Plus" style="width: 200px; height: 200px;">
+    </a>
 </div>*@
 
-<div class="d-flex">
-    <a href="/Favorites/All" class="btn btn-link" style="text-decoration: none; width: 350px; height: 350px; margin-right: 50px;">
-        <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto; color: #fff387;"></i>
+<style>
+    .btn-lg {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-container .btn {
+            margin-right: 25px;
+        }
+
+        .btn-lg h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .btn-lg img {
+            width: 200px;
+            height: 200px;
+        }
+</style>
+
+<div class="d-flex btn-container">
+    <a href="/Favorites/All" class="btn btn-lg">
+        <img src="~/Images/star.png" alt="Favorites">
+        <h1 class="display-6 mb-3 text-center">Favoritter</h1>
     </a>
 
-    <a href="/ExerciseStatuses/All" class="btn btn-link" style="text-decoration: none; width: 350px; height: 350px; margin-right: 50px;">
-        <i class="fa fa-area-chart fa-3x" style="display: block; margin: 0 auto; color: #fff387;"></i>
+    <a href="/ExerciseStatuses/All" class="btn btn-lg">
+        <img src="~/Images/graph.png" alt="Exercise Statuses">
+        <h1 class="display-6 mb-3 text-center">Progression</h1>
     </a>
 
-    <a href="/ExerciseStatuses/All" class="btn btn-link" style="text-decoration: none; width: 350px; height: 350px">
-        <i class="fa fa-plus fa-3x" style="display: block; margin: 0 auto; color: #fff387;"></i>
+    <a href="/Courses/All" class="btn btn-lg">
+        <img src="~/Images/plus.png" alt="Plus">
+        <h1 class="display-6 mb-3 text-center">Tilføj Favoritter</h1>
     </a>
 </div>
 
-
-
-
-<style>
-    .square-button {
-        width: 100px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-        .square-button i {
-            font-size: 2.5em;
-        }
-
-</style>
-
-
-
-
-<ul>
-    
-</ul>

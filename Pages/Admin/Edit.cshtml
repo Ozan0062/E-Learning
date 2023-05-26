@@ -11,7 +11,7 @@
 		<input asp-for="@Model.Data.Id" class="form-control" readonly="@(true)" />
 	</div>
 	<div class="form-group mb-3">
-		<label asp-for="@Model.Data.Name" class="control-label"></label>
+		<label asp-for="@Model.Data.Name" class="control-label">Navn</label>
 		<input asp-for="@Model.Data.Name" class="form-control" />
 		<span asp-validation-for="@Model.Data.Name" class="text-danger"></span>
 	</div>
@@ -22,14 +22,13 @@
 	</div>
 
 	<div class="form-group mb-3">
-		<label asp-for="@Model.Data.Password" class="control-label"></label>
+		<label asp-for="@Model.Data.Password" class="control-label">Adgangskode</label>
 		<input asp-for="@Model.Data.Password" class="form-control" />
-		<input type="checkbox" onclick="showPassword()"> Vis adgangskode
 		<span asp-validation-for="@Model.Data.Password" class="text-danger"></span>
 	</div>
 
 	<div class="form-group mb-3">
-		<label asp-for="@Model.Data.PhoneNumber" class="control-label"></label>
+		<label asp-for="@Model.Data.PhoneNumber" class="control-label">Telefonnummer</label>
 		<input asp-for="@Model.Data.PhoneNumber" class="form-control" />
 		<span asp-validation-for="@Model.Data.PhoneNumber" class="text-danger"></span>
 	</div>

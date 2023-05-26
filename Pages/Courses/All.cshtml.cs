@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Learning.Pages.Courses
 {
-    // h
     public class AllModel : GetAllPageModel<Course>
     {
 		private readonly IFavoriteDataService favoriteDataService;
@@ -29,7 +28,7 @@ namespace E_Learning.Pages.Courses
                 // Tilføj logik for at håndtere succes eller fejl ved at tilføje favorit
 
                 // Returner et passende IActionResult-objekt
-                return RedirectToPage("/Profile/ProfilePage"); // Eksempelvis omdirigering til kursusoversigten
+                return RedirectToPage("/Favorites/All"); // Eksempelvis omdirigering til kursusoversigten
             }
 
             // Håndter tilfælde, hvor brugeren ikke er logget ind

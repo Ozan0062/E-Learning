@@ -3,26 +3,26 @@
 @{
 }
 
-<h1 class="display-3 mb-5">Opret opgave</h1>
+<h1 class="display-3 mb-5">Opret Opgave</h1>
 
 <form method="post" enctype="multipart/form-data">
 	<div class="form-group mb-3">
-		<label asp-for="@Model.Data.Name" class="control-label"></label>
+		<label asp-for="@Model.Data.Name" class="control-label">Navn</label>
 		<input asp-for="@Model.Data.Name" class="form-control" />
 		<span asp-validation-for="@Model.Data.Name" class="text-danger"></span>
 	</div>
 	<div class="form-group">
-		<label asp-for="@Model.Data.Description" class="control-label"></label>
+		<label asp-for="@Model.Data.Description" class="control-label">Beskrivelse</label>
 		<input asp-for="@Model.Data.Description" class="form-control" />
 		<span asp-validation-for="@Model.Data.Description" class="text-danger"></span>
 	</div>
 	<div class="form-group">
-		<label asp-for="@Model.Data.Purpose" class="control-label"></label>
+		<label asp-for="@Model.Data.Purpose" class="control-label">Formål</label>
 		<input asp-for="@Model.Data.Purpose" class="form-control" />
 		<span asp-validation-for="@Model.Data.Purpose" class="text-danger"></span>
 	</div>
 	<div class="form-group">
-		<label asp-for="@Model.Data.Step" class="control-label"></label>
+		<label asp-for="@Model.Data.Step" class="control-label">Trin</label>
 		<textarea asp-for="@Model.Data.Step" id="tiny" class="form-control"></textarea>
 		<span asp-validation-for="@Model.Data.Step" class="text-danger"></span>
 	</div>
@@ -32,7 +32,7 @@
 		<span asp-validation-for="@Model.Data.Hint" class="text-danger"></span>
 	</div>
 	<div class="form-group">
-		<label asp-for="@Model.Data.CourseId" class="control-label"></label>
+		<label asp-for="@Model.Data.CourseId" class="control-label">Kursus</label>
 		<select asp-for="@Model.Data.CourseId" asp-items="@Model.CourseList" class="form-control"></select>
 		<span asp-validation-for="@Model.Data.CourseId" class="text-danger"></span>
 	</div>
