@@ -31,7 +31,7 @@ public abstract class FavoritesPageModel : PageModel
             }
         }
     }
-
+    //Download
     public async Task<IActionResult> OnGetDownloadFileAsync(int id)
     {
         var exercise = await _context.Exercises.FindAsync(id);
