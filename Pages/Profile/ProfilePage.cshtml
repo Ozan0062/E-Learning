@@ -7,18 +7,42 @@
 <h1>Velkommen til din profil, @LogInPageModel.LoggedInUser.Name</h1>
 <!-- Display user-specific profile information here -->
 
-<div class="d-flex">
-    <button class="btn btn-outline-info btn-lg square-button" type="submit" style="background-color:#fff387;">
-        <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto;"></i>
-    </button>
-
-    <form method="get" asp-page="/ExerciseStatuses/All">
-        <button class="btn btn-outline-info btn-lg square-button" type="submit" style="background-color:#fff387;">
-            <i class="fa fa-area-chart fa-3x" style="display: block; margin: 0 auto;"></i>
+@*<div class="d-flex">
+    <form method="get" asp-page="/Favorites/All">
+        <button class="btn btn-lg" type="submit" style="background-color:white; width: 350px; height: 350px; margin-right: 50px;">
+            <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto; color: #fff387"></i>
         </button>
     </form>
 
+    <form method="get" asp-page="/ExerciseStatuses/All">
+        <button class="btn btn-lg" type="submit" style="background-color:white; width: 500px; height: 350px; margin-right: 50px;">
+            <i class="fa fa-area-chart fa-3x" style="display: block; margin: 0 auto; color: #fff387"></i>
+        </button>
+    </form>
+
+    <form method="get" asp-page="/ExerciseStatuses/All">
+        <button class="btn btn-lg" style="background-color:white; width: 350px; height: 350px;">
+            <i class="fa fa-plus fa-3x" style="display: block; margin: 0 auto; color: #fff387"></i>
+        </button>
+    </form>
+</div>*@
+
+<div class="d-flex">
+    <a href="/Favorites/All" class="btn btn-link" style="text-decoration: none; width: 350px; height: 350px; margin-right: 50px;">
+        <i class="fa fa-star fa-3x" style="display: block; margin: 0 auto; color: #fff387;"></i>
+    </a>
+
+    <a href="/ExerciseStatuses/All" class="btn btn-link" style="text-decoration: none; width: 350px; height: 350px; margin-right: 50px;">
+        <i class="fa fa-area-chart fa-3x" style="display: block; margin: 0 auto; color: #fff387;"></i>
+    </a>
+
+    <a href="/ExerciseStatuses/All" class="btn btn-link" style="text-decoration: none; width: 350px; height: 350px">
+        <i class="fa fa-plus fa-3x" style="display: block; margin: 0 auto; color: #fff387;"></i>
+    </a>
 </div>
+
+
+
 
 <style>
     .square-button {
