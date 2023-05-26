@@ -1,7 +1,28 @@
 ﻿@page
 @model E_Learning.Pages.ExerciseStatuses.AllModel
+@inject ELearningDBContext _context
 
-<h1 class="display-3 mb-5">Tilføjede opgaver</h1>
+<h1 class="display-3 mb-5">Progression</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var course in Model.FavoriteCourses)
+        {
+            var exercisesDone = _context.ExerciseStatuses
+            .Where(s => s.Exercise.CourseId == course.Id && s.Status == 1)
+            .GroupBy(s => s.ExerciseId)
+            .Count();
+            <div class="col-md-4">
+                <h3>@course.Name</h3>
+                <p>Total øvelser: @course.Exercises.Count</p>
+                <p>Øvelser udført: @exercisesDone</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+
 
         
 <div class="d-flex justify-content-between">
@@ -30,7 +51,13 @@
                                     <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
                                 }
                             </td>
-                            <td><button class="btn btn-fail"></button></td>
+                            <td>
+                                <form method="post" asp-page-handler="AddToUnDoDone" asp-route-exerciseId="@exercise.Id">
+                                    <button class="btn btn-outline-info btn-sm" type="submit" style="background-color:#fff387" title="UnDo done">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>
