@@ -7,17 +7,17 @@
 
 <form method="post">
 	<div class="form-group mb-3">
-		<label asp-for="@Model.Data.Name" class="control-label"></label>
+		<label asp-for="@Model.Data.Name" class="control-label">Navn</label>
 		<input asp-for="@Model.Data.Name" class="form-control" />
 		<span asp-validation-for="@Model.Data.Name" class="text-danger"></span>
 	</div>
 	<div class="form-group">
-		<label asp-for="@Model.Data.Description" class="control-label"></label>
+		<label asp-for="@Model.Data.Description" class="control-label">Beskrivelse</label>
 		<input asp-for="@Model.Data.Description" class="form-control"/>
 		<span asp-validation-for="@Model.Data.Description" class="text-danger"></span>
 	</div>
 		<div class="form-group">
-			<label asp-for="@Model.Data.EducationId" class="control-label"></label>
+			<label asp-for="@Model.Data.EducationId" class="control-label">Uddannelse</label>
 			<select asp-for="@Model.Data.EducationId" asp-items="@Model.EducationList" class="form-control"></select>
 			<span asp-validation-for="@Model.Data.EducationId" class="text-danger"></span>
 	    </div>
