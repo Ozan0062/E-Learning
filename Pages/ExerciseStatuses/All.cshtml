@@ -8,10 +8,7 @@
     <div class="row">
         @foreach (var course in Model.FavoriteCourses)
         {
-            var exercisesDone = _context.ExerciseStatuses
-            .Where(s => s.Exercise.CourseId == course.Id && s.Status == 1)
-            .GroupBy(s => s.ExerciseId)
-            .Count();
+            var exercisesDone = Model.GetExercisesDoneCountForCourse(course.Id, LogInPageModel.LoggedInUser.Id);
             <div class="col-md-4">
                 <h3>@course.Name</h3>
                 <p>Total øvelser: @course.Exercises.Count</p>
@@ -20,6 +17,7 @@
         }
     </div>
 </div>
+
 
 
 <div class="d-flex justify-content-between">

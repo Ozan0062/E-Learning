@@ -48,5 +48,16 @@ namespace E_Learning.Pages.ExerciseStatuses
 
             return RedirectToPage("/ExerciseStatuses/All");
         }
+        public int GetExercisesDoneCountForCourse(int courseId, int userId)
+        {
+            return _context.ExerciseStatuses
+                           .Where(s => s.Exercise.CourseId == courseId && s.Status == 1 && s.UserId == userId)
+                           .Select(s => s.ExerciseId)
+                           .Distinct()
+                           .Count();
+        }
+
+
+
     }
 }
