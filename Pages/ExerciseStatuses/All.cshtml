@@ -21,7 +21,7 @@
     </div>
 </div>
 
-        
+
 <div class="d-flex justify-content-between">
     <div style="width:100%;">
         <div style="width:100%; overflow-x: auto;">
@@ -36,8 +36,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var exercise in Model.ExercisesDone)
+                    @foreach (var exerciseStatus in Model.ExerciseStatusesDone)
                     {
+                        var exercise = exerciseStatus.Exercise;
                         <tr>
                             <td style="word-wrap: break-word;">@exercise.Name</td>
                             <td style="word-wrap: break-word;">@exercise.Description</td>
@@ -49,7 +50,7 @@
                                 }
                             </td>
                             <td>
-                                <form method="post" asp-page-handler="DeleteExerciseStatus" asp-route-id="@exercise.Id">
+                                <form method="post" asp-page-handler="DeleteExerciseStatus" asp-route-id="@exerciseStatus.Id">
                                     <button class="btn btn-outline-danger btn-sm" type="submit" style="background-color:#fff387" title="Delete">
                                         <i class="fa fa-trash"></i>
                                     </button>
