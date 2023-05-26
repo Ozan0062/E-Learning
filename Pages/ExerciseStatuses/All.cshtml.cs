@@ -8,21 +8,17 @@ namespace E_Learning.Pages.ExerciseStatuses
     {
         private readonly IExerciseStatusDataService _exerciseStatusDataService;
         private readonly IExerciseDataService _exerciseDataService;
-        private readonly ELearningDBContext _context;
-        public List<Course> FavoriteCourses { get; set; } = new List<Course>();
         public List<ExerciseStatus> ExerciseStatuses { get; set; }
-
 
         public AllModel(IFavoriteDataService favoriteDataService,
                         ICourseDataService courseDataService,
                         IExerciseDataService exerciseDataService,
                         IExerciseStatusDataService exerciseStatusDataService,
                         ELearningDBContext context)
-            : base(favoriteDataService, courseDataService)
+            : base(favoriteDataService, courseDataService, context)
         {
             _exerciseDataService = exerciseDataService;
             _exerciseStatusDataService = exerciseStatusDataService;
-            _context = context;
 
             this._exerciseStatusDataService = exerciseStatusDataService;
         }
@@ -45,17 +41,20 @@ namespace E_Learning.Pages.ExerciseStatuses
             LoadFavoriteCourses();
         }
 
-
-        public async Task<IActionResult> OnGetDownloadFileAsync(int id)
+        public async Task<IActionResult> OnPostDeleteExerciseStatusAsync(int id)
         {
-            var exercise = await _context.Exercises.FindAsync(id);
+            var exerciseStatus = await _context.ExerciseStatuses.FindAsync(id);
 
-            if (exercise == null || exercise.Data == null)
+            if (exerciseStatus == null)
             {
                 return NotFound();
             }
 
-            return File(exercise.Data, exercise.ContentType, exercise.FileName);
+            _context.ExerciseStatuses.Remove(exerciseStatus);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("/ExerciseStatuses/All");
         }
+
     }
 }
