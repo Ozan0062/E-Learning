@@ -11,6 +11,10 @@ namespace E_Learning.Pages.ExerciseStatuses
         private readonly IExerciseStatusDataService _exerciseStatusDataService;
         private readonly IExerciseDataService _exerciseDataService;
         private readonly ELearningDBContext _context;
+        public List<Course> FavoriteCourses { get; set; } = new List<Course>();
+        public List<ExerciseStatus> ExerciseStatuses { get; set; }
+
+
         public AllModel(IFavoriteDataService favoriteDataService,
                         ICourseDataService courseDataService,
                         IExerciseDataService exerciseDataService,
@@ -41,6 +45,34 @@ namespace E_Learning.Pages.ExerciseStatuses
                     }
                 }
             }
+
+            var favorites = _favoriteDataService.GetFavoritesForUser(LogInPageModel.LoggedInUser.Id);
+            foreach (var favorite in favorites)
+            {
+                if (favorite.CourseId.HasValue)
+                {
+                    var course = _courseDataService.GetCourseWithExercises(favorite.CourseId.Value);
+                    if (course != null && !FavoriteCourses.Any(c => c.Id == course.Id))
+                    {
+                        FavoriteCourses.Add(course);
+                    }
+                }
+            }
+
+
+        }
+
+
+        public async Task<IActionResult> OnGetDownloadFileAsync(int id)
+        {
+            var exercise = await _context.Exercises.FindAsync(id);
+
+            if (exercise == null || exercise.Data == null)
+            {
+                return NotFound();
+            }
+
+            return File(exercise.Data, exercise.ContentType, exercise.FileName);
         }
     }
 }
