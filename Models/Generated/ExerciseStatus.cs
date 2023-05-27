@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
+
 [Table("ExerciseStatus")]
 public partial class ExerciseStatus
 {
@@ -17,6 +18,9 @@ public partial class ExerciseStatus
     public int? ExerciseId { get; set; }
 
     public int? Status { get; set; }
+
+    [Column(TypeName = "date")]
+    public DateTime? DateAdded { get; set; }
 
     [ForeignKey("ExerciseId")]
     [InverseProperty("ExerciseStatuses")]

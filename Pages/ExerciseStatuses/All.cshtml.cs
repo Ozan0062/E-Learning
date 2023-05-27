@@ -11,7 +11,7 @@ namespace E_Learning.Pages.ExerciseStatuses
     {
         private readonly IExerciseStatusDataService _exerciseStatusDataService;
         private readonly IExerciseDataService _exerciseDataService;
-        public List<ExerciseStatus> ExerciseStatusesDone { get; set; }  // renamed here
+        public List<ExerciseStatus> ExerciseStatusesDone { get; set; }
 
         public AllModel(IFavoriteDataService favoriteDataService,
                         ICourseDataService courseDataService,
@@ -26,9 +26,10 @@ namespace E_Learning.Pages.ExerciseStatuses
 
         public async Task OnGetAsync()
         {
-            ExerciseStatusesDone = await _context.ExerciseStatuses  // and here
+            ExerciseStatusesDone = await _context.ExerciseStatuses
                 .Where(es => es.UserId == LogInPageModel.LoggedInUser.Id && es.Status == 1)
                 .Include(es => es.Exercise)
+                .Distinct()
                 .ToListAsync();
 
             LoadFavoriteCourses();
@@ -56,8 +57,5 @@ namespace E_Learning.Pages.ExerciseStatuses
                            .Distinct()
                            .Count();
         }
-
-
-
     }
 }

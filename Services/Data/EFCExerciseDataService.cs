@@ -4,7 +4,7 @@ public class EFCExerciseDataService : EFCDataServiceAppBase<Exercise>, IExercise
 {
     protected override IQueryable<Exercise> GetAllWithIncludes(DbContext context)
     {
-        return context.Set<Exercise>().Include(e => e.Course); // Include the Course relation here
+        return context.Set<Exercise>().Include(e => e.Course).Include(e => e.Course.Education);
     }
 
     public Exercise GetExerciseWithExerciseDone(int exerciseId)
