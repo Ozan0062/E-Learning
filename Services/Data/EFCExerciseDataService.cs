@@ -15,7 +15,6 @@ public class EFCExerciseDataService : EFCDataServiceAppBase<Exercise>, IExercise
                 .FirstOrDefault(f => f.ExerciseId == exerciseId && f.Status == 1); // Assuming that Status == 1 means the exercise is done.
 
             return exerciseStatus != null ? context.Exercises.Include(e => e.Course).FirstOrDefault(e => e.Id == exerciseStatus.ExerciseId) : null;
-            // Make sure to include the Course relation when retrieving the exercise.
         }
     }
 }

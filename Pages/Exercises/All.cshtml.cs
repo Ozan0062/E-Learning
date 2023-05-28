@@ -7,9 +7,8 @@ namespace E_Learning.Pages.Exercises
     public class AllModel : GetAllPageModel<Exercise>
     {
         private readonly ELearningDBContext _context;
-        
 
-        public AllModel(IExerciseDataService dataService, ELearningDBContext context, IEducationDataService educationDataService)
+        public AllModel(IExerciseDataService dataService, ELearningDBContext context)
             : base(dataService)
         {
             _context = context;

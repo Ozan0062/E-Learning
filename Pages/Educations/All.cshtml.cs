@@ -5,8 +5,8 @@ namespace E_Learning.Pages.Educations
 {
     public class AllModel : GetAllPageModel<Education>
     {
-        public AllModel(IEducationDataService dataService)
-            : base(dataService)
+        public AllModel(IEducationDataService educationDataService)
+            : base(educationDataService)
         {
         }
     }
