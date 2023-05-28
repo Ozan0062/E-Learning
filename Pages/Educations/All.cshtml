@@ -1,38 +1,78 @@
 ﻿@page
 @model E_Learning.Pages.Educations.AllModel
-@{
-}
+
 <h1 class="display-6 mb-3 text-center">Uddannelse oversigt</h1>
 
 <div class="container">
     <div class="row">
         @foreach (var education in Model.Data)
         {
-                <div class="col-md-4 p-3">
-                    <div class="card shadow" style="width: 18rem;">
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title">@education.Name</h3>
+            <div class="col-md-4 p-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">@education.Name</h3>
+                        @if (AdminLogInModel.LoggedInAdmin != null)
+                        {
                             <div class="d-flex justify-content-between">
                                 <div>
-                                @if (AdminLogInModel.LoggedInAdmin != null)
-                                {
-                                            <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@education.Id"><i class="fa fa-edit"></i></a>
-                                            <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@education.Id"><i class="fa fa-trash"></i></a>
-
-                                }
+                                    <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@education.Id"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@education.Id"><i class="fa fa-trash"></i></a>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </div>
+            </div>
         }
     </div>
 </div>
 
 @if (AdminLogInModel.LoggedInAdmin != null)
 {
-        <p>
-            <a class="btn btn-outline-basic mt-3" style="background-color:#fff387" asp-page="Create"> Opret ny uddannelse </a>
-        </p>
-
+    <p>
+        <a class="btn btn-outline-basic mt-3" style="background-color:#fff387" asp-page="Create"> Opret ny uddannelse </a>
+    </p>
 }
+
+<div class="container">
+    <div class="row">
+        @foreach (var education in Model.Data)
+        {
+            <div class="col-md-12">
+                <h2 style="background-color: #f2f2f2; padding: 10px;">@education.Name</h2>
+                @foreach (var course in education.Courses)
+                {
+                    <h3>@course.Name</h3>
+                    <div style="width:100%; overflow-x: auto;">
+                        <table class="table" style="table-layout: fixed; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 20%">Navn</th>
+                                    <th scope="col" style="width: 20%">Beskrivelse</th>
+                                    <th scope="col" style="width: 40%">Formål</th>
+                                    <th scope="col" style="width: 20%">Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var exercise in course.Exercises)
+                                {
+                                    <tr>
+                                        <td style="word-wrap: break-word;">@exercise.Name</td>
+                                        <td style="word-wrap: break-word;">@exercise.Description</td>
+                                        <td style="word-wrap: break-word;">@exercise.Purpose</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(exercise.FileName))
+                                            {
+                                                <a asp-page-handler="DownloadFile" asp-route-id="@exercise.Id" class="btn btn-outline-info btn-sm" style="background-color:#fff387" title="Download"><i class="fa fa-download"></i></a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

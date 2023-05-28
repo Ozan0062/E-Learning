@@ -24,7 +24,7 @@ namespace E_Learning.Pages.Exercises
         public SelectList CourseList { get; set; }
 
         [BindProperty]
-        public Exercise Data { get; set; }
+        public new Exercise Data { get; set; }
 
         public override IActionResult OnPost()
         {

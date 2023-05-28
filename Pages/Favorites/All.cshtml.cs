@@ -23,11 +23,12 @@ namespace E_Learning.Pages.Favorites
             _exerciseStatusDataService = exerciseStatusDataService;
         }
 
-
         public void OnGet()
         {
             LoadFavoriteCourses();
         }
+
+
 
         public async Task<IActionResult> OnPostAddToDoneAsync(int exerciseId)
         {

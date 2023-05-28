@@ -1,13 +1,9 @@
-﻿
-public partial class Course : IHasId, IUpdateFromOther<Course>
+﻿public partial class Course : IHasId, IUpdateFromOther<Course>
 {
-    public void Update(Course tOther)
+    public void Update(Course other)
     {
-        Name = tOther.Name;
-        Description = tOther.Description;
-        EducationId = tOther.EducationId; 
+        Name = other.Name;
+        Description = other.Description;
+        EducationId = other.EducationId;
     }
-
-
 }
-

@@ -48,7 +48,6 @@ public abstract class FavoritesPageModel : PageModel
             .ToListAsync();
     }
 
-
     //Download
     public async Task<IActionResult> OnGetDownloadFileAsync(int id)
     {

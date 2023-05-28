@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 public class EFCFavoriteDataService : EFCDataServiceAppBase<Favorite>, IFavoriteDataService
 {
-    public List<Favorite> Favorite { get; set; }
+    private readonly ELearningDBContext _context;
 
-    public EFCFavoriteDataService()
+    public EFCFavoriteDataService(ELearningDBContext context)
     {
-        Favorite = new List<Favorite>(); // Initialize the Favorite property with an empty list
+        _context = context;
     }
 
     protected override IQueryable<Favorite> GetAllWithIncludes(DbContext context)
@@ -18,11 +19,8 @@ public class EFCFavoriteDataService : EFCDataServiceAppBase<Favorite>, IFavorite
 
     public List<Favorite> GetFavoritesForUser(int userId)
     {
-        using (var context = new ELearningDBContext())
-        {
-            return context.Favorites
-                .Where(f => f.UserId == userId)
-                .ToList();
-        }
+        return _context.Favorites
+            .Where(f => f.UserId == userId)
+            .ToList();
     }
 }
