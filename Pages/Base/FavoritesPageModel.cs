@@ -15,7 +15,6 @@ public abstract class FavoritesPageModel : PageModel
     public List<Course> FavoriteCourses { get; set; } = new List<Course>();
     public List<ExerciseStatus> ExerciseStatusesDone { get; set; }
 
-
     protected FavoritesPageModel(IFavoriteDataService favoriteDataService,
                                  ICourseDataService courseDataService,
                                  IExerciseStatusDataService exerciseStatusDataService,
@@ -37,7 +36,6 @@ public abstract class FavoritesPageModel : PageModel
             .ToList();
     }
 
-
     protected async Task LoadExerciseStatusesDone()
     {
         ExerciseStatusesDone = await _context.ExerciseStatuses
@@ -48,16 +46,13 @@ public abstract class FavoritesPageModel : PageModel
             .ToListAsync();
     }
 
-    //Download
     public async Task<IActionResult> OnGetDownloadFileAsync(int id)
     {
         var exercise = await _context.Exercises.FindAsync(id);
-
         if (exercise == null || exercise.Data == null)
         {
             return NotFound();
         }
-
         return File(exercise.Data, exercise.ContentType, exercise.FileName);
     }
 }

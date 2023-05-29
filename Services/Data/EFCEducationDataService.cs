@@ -4,6 +4,8 @@ public class EFCEducationDataService : EFCDataServiceAppBase<Education>, IEducat
 {
     protected override IQueryable<Education> GetAllWithIncludes(DbContext context)
     {
-        return context.Set<Education>().Include(e => e.Courses).ThenInclude(c => c.Exercises);
+        return context.Set<Education>()
+            .Include(e => e.Courses)
+            .ThenInclude(c => c.Exercises);
     }
 }
