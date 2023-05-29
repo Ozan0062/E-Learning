@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace E_Learning.Pages.ExerciseStatuses
 {
@@ -8,53 +11,41 @@ namespace E_Learning.Pages.ExerciseStatuses
     {
         private readonly IExerciseStatusDataService _exerciseStatusDataService;
         private readonly IExerciseDataService _exerciseDataService;
-        public List<ExerciseStatus> ExerciseStatuses { get; set; }
 
         public AllModel(IFavoriteDataService favoriteDataService,
                         ICourseDataService courseDataService,
                         IExerciseDataService exerciseDataService,
                         IExerciseStatusDataService exerciseStatusDataService,
                         ELearningDBContext context)
-            : base(favoriteDataService, courseDataService, context)
+            : base(favoriteDataService, courseDataService, exerciseStatusDataService, context)
         {
             _exerciseDataService = exerciseDataService;
             _exerciseStatusDataService = exerciseStatusDataService;
-
-            this._exerciseStatusDataService = exerciseStatusDataService;
         }
-        public List<Exercise> ExercisesDone { get; set; } = new List<Exercise>();
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            var exerciseDones = _exerciseStatusDataService.GetExerciseStatusForUser(LogInPageModel.LoggedInUser.Id);
-            foreach (var exerciseDone in exerciseDones)
-            {
-                if (exerciseDone.ExerciseId.HasValue)
-                {
-                    var exercise = _exerciseDataService.GetExerciseWithExerciseDone(exerciseDone.ExerciseId.Value);
-                    if (exercise != null && !ExercisesDone.Any(c => c.Id == exercise.Id))
-                    {
-                        ExercisesDone.Add(exercise);
-                    }
-                }
-            }
             LoadFavoriteCourses();
+            await LoadExerciseStatusesDone();
+
         }
 
         public async Task<IActionResult> OnPostDeleteExerciseStatusAsync(int id)
         {
             var exerciseStatus = await _context.ExerciseStatuses.FindAsync(id);
-
-            if (exerciseStatus == null)
-            {
-                return NotFound();
-            }
-
             _context.ExerciseStatuses.Remove(exerciseStatus);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("/ExerciseStatuses/All");
         }
 
+        public int GetExercisesDoneCountForCourse(int courseId, int userId)
+        {
+            return _context.ExerciseStatuses
+                           .Where(s => s.Exercise.CourseId == courseId && s.Status == 1 && s.UserId == userId)
+                           .Select(s => s.ExerciseId)
+                           .Distinct()
+                           .Count();
+        }
     }
 }

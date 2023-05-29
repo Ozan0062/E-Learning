@@ -17,7 +17,7 @@ namespace E_Learning.Pages.Favorites
                         IExerciseDataService exerciseDataService,
                         IExerciseStatusDataService exerciseStatusDataService,
                         ELearningDBContext context)
-        : base(favoriteDataService, courseDataService, context)
+            : base(favoriteDataService, courseDataService, exerciseStatusDataService, context)
         {
             _exerciseDataService = exerciseDataService;
             _exerciseStatusDataService = exerciseStatusDataService;
@@ -27,6 +27,8 @@ namespace E_Learning.Pages.Favorites
         {
             LoadFavoriteCourses();
         }
+
+
 
         public async Task<IActionResult> OnPostAddToDoneAsync(int exerciseId)
         {

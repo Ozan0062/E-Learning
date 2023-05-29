@@ -4,7 +4,9 @@ public class EFCExerciseDataService : EFCDataServiceAppBase<Exercise>, IExercise
 {
     protected override IQueryable<Exercise> GetAllWithIncludes(DbContext context)
     {
-        return context.Set<Exercise>().Include(e => e.Course); // Include the Course relation here
+        return context.Set<Exercise>()
+            .Include(e => e.Course)
+            .ThenInclude(c => c.Education);
     }
 
     public Exercise GetExerciseWithExerciseDone(int exerciseId)
@@ -12,10 +14,11 @@ public class EFCExerciseDataService : EFCDataServiceAppBase<Exercise>, IExercise
         using (var context = new ELearningDBContext())
         {
             var exerciseStatus = context.ExerciseStatuses
-                .FirstOrDefault(f => f.ExerciseId == exerciseId && f.Status == 1); // Assuming that Status == 1 means the exercise is done.
+                .FirstOrDefault(f => f.ExerciseId == exerciseId && f.Status == 1);
 
-            return exerciseStatus != null ? context.Exercises.Include(e => e.Course).FirstOrDefault(e => e.Id == exerciseStatus.ExerciseId) : null;
-            // Make sure to include the Course relation when retrieving the exercise.
+            return exerciseStatus != null ? context.Exercises
+                .Include(e => e.Course)
+                .FirstOrDefault(e => e.Id == exerciseStatus.ExerciseId) : null;
         }
     }
 }

@@ -7,47 +7,46 @@ using System.Threading.Tasks;
 
 namespace E_Learning.Pages.Exercises
 {
-	public class CreateModel : CreatePageModel<Exercise>
-	{
-		private readonly IExerciseDataService _dataService;
+    public class CreateModel : CreatePageModel<Exercise>
+    {
+        private readonly IExerciseDataService _dataService;
 
-		public CreateModel(IExerciseDataService dataService, ICourseDataService courseDataService)
-			: base(dataService)
-		{
-			_dataService = dataService;
-			CourseList = new SelectList(courseDataService.GetAll(), nameof(Course.Id), nameof(Course.Name));
-		}
+        public CreateModel(IExerciseDataService dataService, ICourseDataService courseDataService)
+            : base(dataService)
+        {
+            _dataService = dataService;
+            CourseList = new SelectList(courseDataService.GetAll(), nameof(Course.Id), nameof(Course.Name));
+        }
 
-		[BindProperty]
-		public IFormFile UploadedFile { get; set; }
-		public SelectList CourseList { get; set; }
-		
-		[BindProperty]
-		public Exercise Data { get; set; }
+        [BindProperty]
+        public IFormFile UploadedFile { get; set; }
 
+        public SelectList CourseList { get; set; }
 
-		public override IActionResult OnPost()
-		{
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+        [BindProperty]
+        public new Exercise Data { get; set; }
 
-			if (UploadedFile != null)
-			{
-				using (var memoryStream = new MemoryStream())
-				{
-					UploadedFile.CopyTo(memoryStream);
-					Data.Data = memoryStream.ToArray();
-					Data.FileName = UploadedFile.FileName;
-					Data.ContentType = UploadedFile.ContentType;
-				}
-			}
+        public override IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-			// Here, call your method to create the exercise.
-			_dataService.Create(Data);
+            if (UploadedFile != null)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    UploadedFile.CopyTo(memoryStream);
+                    Data.Data = memoryStream.ToArray();
+                    Data.FileName = UploadedFile.FileName;
+                    Data.ContentType = UploadedFile.ContentType;
+                }
+            }
 
-			return RedirectToPage("/Exercises/All");
-		}
-	}
+            _dataService.Create(Data);
+
+            return RedirectToPage("/Exercises/All");
+        }
+    }
 }

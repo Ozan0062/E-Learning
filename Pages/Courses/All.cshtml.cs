@@ -4,34 +4,30 @@ namespace E_Learning.Pages.Courses
 {
     public class AllModel : GetAllPageModel<Course>
     {
-		private readonly IFavoriteDataService favoriteDataService;
+        private readonly IFavoriteDataService favoriteDataService;
 
-		public AllModel(ICourseDataService dataService, 
+        public AllModel(ICourseDataService dataService,
                         IFavoriteDataService favoriteDataService)
             : base(dataService)
         {
-			this.favoriteDataService = favoriteDataService;
-		}
+            this.favoriteDataService = favoriteDataService;
+        }
 
-        public async Task<IActionResult> OnPostAddToFavoritesAsync(int courseId)
+        public IActionResult OnPostAddToFavorites(int courseId)
         {
             if (LogInPageModel.LoggedInUser != null)
             {
                 var favorite = new Favorite
                 {
-                    UserId = LogInPageModel.LoggedInUser.Id, // Brug brugerens ID
-                    CourseId = courseId // Brug det kursus-ID, der er forbundet med knappen
+                    UserId = LogInPageModel.LoggedInUser.Id,
+                    CourseId = courseId
                 };
 
                 this.favoriteDataService.Create(favorite);
 
-                // Tilføj logik for at håndtere succes eller fejl ved at tilføje favorit
-
-                // Returner et passende IActionResult-objekt
-                return RedirectToPage("/Favorites/All"); // Eksempelvis omdirigering til kursusoversigten
+                return RedirectToPage("/Favorites/All");
             }
 
-            // Håndter tilfælde, hvor brugeren ikke er logget ind
             return Unauthorized();
         }
     }

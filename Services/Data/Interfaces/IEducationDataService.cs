@@ -1,4 +1,3 @@
-﻿
-	public interface IEducationDataService : IDataService<Education>
-	{
-    }
+﻿public interface IEducationDataService : IDataService<Education>
+{
+}

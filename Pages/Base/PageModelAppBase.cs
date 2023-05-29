@@ -17,7 +17,6 @@ public class PageModelAppBase<TData> : PageModel
     public const string DefaultErrorPage = "/Error";
 
 
-
 	/// <summary>
 	/// Data service reference corresponding to the data entity type
 	/// </summary>

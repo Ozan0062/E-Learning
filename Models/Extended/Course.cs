@@ -1,17 +1,9 @@
-﻿
-public partial class Course : IHasId, IUpdateFromOther<Course>
+﻿public partial class Course : IHasId, IUpdateFromOther<Course>
 {
-    public Course()
+    public void Update(Course other)
     {
-        this.Exercises = new HashSet<Exercise>();
+        Name = other.Name;
+        Description = other.Description;
+        EducationId = other.EducationId;
     }
-    public void Update(Course tOther)
-    {
-        Name = tOther.Name;
-        Description = tOther.Description;
-        EducationId = tOther.EducationId; 
-    }
-
-
 }
-
