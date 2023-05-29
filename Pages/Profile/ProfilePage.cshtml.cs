@@ -14,14 +14,15 @@ public class ProfilePageModel : PageModel
 
     public User LoggedInUser { get; set; }
     public List<Course> FavoriteCourses { get; set; }
- 
+
     public void OnGet(int userId)
     {
         userId = LogInPageModel.LoggedInUser.Id;
 
-        FavoriteCourses = _favoriteDataService.Favorite
-            .Where(f => f.UserId == userId)
+        FavoriteCourses = _favoriteDataService.GetFavoritesForUser(userId)
+            .Where(f => f.CourseId.HasValue)
             .Select(f => f.Course)
             .ToList();
     }
+
 }
