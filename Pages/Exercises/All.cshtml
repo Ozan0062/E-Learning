@@ -21,9 +21,12 @@
                         <strong>Hints:</strong> @Html.Raw(exercise.Hint)
                     </p>
 
-                    @if (AdminLogInModel.LoggedInAdmin != null)
+                    @if (InstructorLogInModel.LoggedInInstructor != null)
                     {
                         <a class="btn btn-outline-primary btn-sm" type="button" style="background-color:#fff387" title="Edit" asp-page="Edit" asp-route-id="@exercise.Id"><i class="fa fa-edit"></i></a>
+                    }
+                    @if (InstructorLogInModel.LoggedInInstructor != null || AdminLogInModel.LoggedInAdmin != null)
+                    {
                         <a class="btn btn-outline-danger btn-sm" type="button" style="background-color:#fff387" title="Delete" asp-page="Delete" asp-route-id="@exercise.Id"><i class="fa fa-trash"></i></a>
                     }
                     @if (!string.IsNullOrEmpty(exercise.FileName))
@@ -39,7 +42,7 @@
 
 
 
-@if (AdminLogInModel.LoggedInAdmin != null)
+@if (InstructorLogInModel.LoggedInInstructor != null)
 {
     <p>
         <a class="btn btn-outline-basic mt-3" style="background-color:#fff387" asp-page="Create"> Opret ny opgave </a>
